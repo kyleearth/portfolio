@@ -18,6 +18,11 @@ Education
 
 Research & Work Experience
 ======
+
+* Jan-March 2026: Visiting Researcher
+  * [Max Planck Institute for Demographic Research](https://www.demogr.mpg.de/en/research_6120/digital_and_computational_demography_zagheni_11666/population_dynamics_and_sustainable_well_being_11670/team/)
+  * Supervisor: [Carolina Vieira](https://www.demogr.mpg.de/en/about_us_6113/staff_directory_1899/carolina_coimbra_vieira_3969/)
+
 * Summer 2025: Research Intern
   * Dow Chemical Company - AAIH
   * Supervisor: Justin Kauhl
@@ -28,7 +33,7 @@ Research & Work Experience
 
 * 2020 - 2022: Graduate Research Assistant
   * [HCI Lab](https://sites.udel.edu/hci-lab/), University of Delaware
-  * Advisor:: Professor Roghayeh Barmaki
+  * Advisor: Professor Roghayeh Barmaki
 
 * 2019 - 2020: Graduate Research Assistant
   * University of Southern California

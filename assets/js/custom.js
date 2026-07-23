@@ -100,7 +100,6 @@
         var isSelected = draftCountries.indexOf(country) !== -1;
         var countElement = button.querySelector("[data-vote-count]");
         var labelElement = button.querySelector("[data-vote-label]");
-        var star = button.querySelector(".travel-unexplored__star");
 
         button.classList.toggle("is-recommended", isSelected);
         button.classList.toggle("is-loading", isSaving);
@@ -117,10 +116,6 @@
 
         if (labelElement) {
           labelElement.textContent = count === 1 ? "vote" : "votes";
-        }
-
-        if (star) {
-          star.textContent = isSaving ? "…" : isSelected ? "★" : "☆";
         }
       });
     }

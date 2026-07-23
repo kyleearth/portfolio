@@ -1256,18 +1256,6 @@ a.profile-links-card__item {
   color: #6f431f;
 }
 
-.travel-unexplored__star {
-  flex: 0 0 auto;
-  color: #9b5c2d;
-  font-size: 0.92rem;
-  line-height: 1;
-  opacity: 0.45;
-}
-
-.travel-unexplored__country.is-recommended .travel-unexplored__star {
-  opacity: 1;
-}
-
 @media (min-width: 980px) {
   .landing-hero {
     grid-template-columns: minmax(12rem, 14rem) minmax(0, 1fr);

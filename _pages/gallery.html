@@ -89,75 +89,98 @@ excerpt: "A curated overview of the countries and regions I have explored."
     </ul>
   </section>
 
-  <details class="travel-unexplored">
-    <summary class="travel-unexplored__summary">
+  <section class="travel-vote-hub" aria-labelledby="travel-vote-title">
+    <header class="travel-vote-hub__header">
       <div>
         <p class="section-kicker">Next horizons</p>
-        <h2>Where should I explore next?</h2>
+        <h2 id="travel-vote-title">Where should I explore next?</h2>
       </div>
-      <div class="travel-unexplored__total">
+      <div class="travel-vote-hub__total">
         <strong>{{ unexplored_count }}</strong>
         <span>countries</span>
-        <em class="travel-unexplored__recommendation-summary" id="travel-recommendation-summary" hidden>0 people voted so far</em>
+        <em class="travel-vote-hub__participant-count" id="travel-recommendation-summary" hidden>0 people voted so far</em>
       </div>
-      <span class="travel-unexplored__chevron" aria-hidden="true">&#8964;</span>
-    </summary>
+    </header>
 
-    <div class="travel-unexplored__content">
-      <section class="travel-recommendations" aria-label="Travel destination voting">
-        <p class="travel-recommendations__status" id="travel-recommendation-status" aria-live="polite">Loading live vote totals...</p>
-        <div class="travel-recommendations__list" id="travel-recommendation-list" aria-live="polite">
-          <span class="travel-recommendations__empty">No votes yet. Be the first to choose a destination.</span>
-        </div>
-        <div class="travel-recommendations__actions">
-          <button class="travel-recommendations__refresh" id="travel-recommendation-refresh" type="button">Refresh totals</button>
-          <button class="travel-recommendations__confirm" id="travel-recommendation-confirm" type="button" disabled>Confirm Selection</button>
-        </div>
+    <div class="travel-vote-hub__content">
+      <section class="travel-leaderboard" aria-labelledby="travel-ranking-title">
+        <header class="travel-leaderboard__header">
+          <div>
+            <p class="section-kicker">Live results</p>
+            <h3 id="travel-ranking-title">Current ranking</h3>
+            <p>Destinations ranked by confirmed votes from visitors.</p>
+          </div>
+          <button class="travel-leaderboard__refresh" id="travel-recommendation-refresh" type="button">Refresh ranking</button>
+        </header>
+        <ol class="travel-leaderboard__list" id="travel-ranking-list" aria-live="polite">
+          <li class="travel-leaderboard__empty">Loading the current ranking...</li>
+        </ol>
       </section>
 
-      {% for region in world_regions %}
-        {% assign region_unexplored_count = 0 %}
-        {% for country in world_countries %}
-          {% if country.region == region %}
-            {% unless visited_country_names contains country.name %}
-              {% assign region_unexplored_count = region_unexplored_count | plus: 1 %}
-            {% endunless %}
-          {% endif %}
-        {% endfor %}
-
-        <section class="travel-unexplored__region" aria-labelledby="unexplored-{{ region | slugify }}">
-          <div class="travel-unexplored__region-heading">
-            <h3 id="unexplored-{{ region | slugify }}">{{ region }}</h3>
-            <span>{{ region_unexplored_count }}</span>
+      <details class="travel-ballot">
+        <summary class="travel-ballot__summary">
+          <div>
+            <p class="section-kicker">Your ballot</p>
+            <h3>Cast your vote</h3>
+            <p>Select up to five destinations below, then confirm your choices.</p>
           </div>
-          <ul class="travel-unexplored__countries">
+          <div class="travel-ballot__selection" aria-live="polite">
+            <strong id="travel-selection-count">0</strong>
+            <span>of <span id="travel-selection-limit">5</span> selected</span>
+          </div>
+          <span class="travel-ballot__chevron" aria-hidden="true">&#8964;</span>
+        </summary>
+
+        <div class="travel-ballot__content">
+          <div class="travel-ballot__actions">
+            <p class="travel-ballot__status" id="travel-recommendation-status" aria-live="polite">Loading voting options...</p>
+            <button class="travel-ballot__confirm" id="travel-recommendation-confirm" type="button" disabled>Confirm votes</button>
+          </div>
+
+          {% for region in world_regions %}
+            {% assign region_unexplored_count = 0 %}
             {% for country in world_countries %}
               {% if country.region == region %}
                 {% unless visited_country_names contains country.name %}
-                  <li>
-                    <button
-                      class="travel-unexplored__country"
-                      type="button"
-                      data-country="{{ country.name | escape }}"
-                      data-flag="{{ country.flag }}"
-                      aria-pressed="false"
-                      aria-label="Vote for {{ country.name | escape }}"
-                      disabled>
-                      <span class="travel-unexplored__flag" aria-hidden="true">{{ country.flag }}</span>
-                      <span class="travel-unexplored__name">{{ country.name }}</span>
-                      <span class="travel-unexplored__vote-total">
-                        <strong data-vote-count>0</strong>
-                        <span data-vote-label>votes</span>
-                      </span>
-                    </button>
-                  </li>
+                  {% assign region_unexplored_count = region_unexplored_count | plus: 1 %}
                 {% endunless %}
               {% endif %}
             {% endfor %}
-          </ul>
-        </section>
-      {% endfor %}
-    </div>
-  </details>
 
+            <section class="travel-unexplored__region" aria-labelledby="unexplored-{{ region | slugify }}">
+              <div class="travel-unexplored__region-heading">
+                <h3 id="unexplored-{{ region | slugify }}">{{ region }}</h3>
+                <span>{{ region_unexplored_count }}</span>
+              </div>
+              <ul class="travel-unexplored__countries">
+                {% for country in world_countries %}
+                  {% if country.region == region %}
+                    {% unless visited_country_names contains country.name %}
+                      <li>
+                        <button
+                          class="travel-unexplored__country"
+                          type="button"
+                          data-country="{{ country.name | escape }}"
+                          data-flag="{{ country.flag }}"
+                          aria-pressed="false"
+                          aria-label="Vote for {{ country.name | escape }}"
+                          disabled>
+                          <span class="travel-unexplored__flag" aria-hidden="true">{{ country.flag }}</span>
+                          <span class="travel-unexplored__name">{{ country.name }}</span>
+                          <span class="travel-unexplored__vote-total">
+                            <strong data-vote-count>0</strong>
+                            <span data-vote-label>votes</span>
+                          </span>
+                        </button>
+                      </li>
+                    {% endunless %}
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </section>
+          {% endfor %}
+        </div>
+      </details>
+    </div>
+  </section>
 </div>

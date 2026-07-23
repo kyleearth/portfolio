@@ -38,13 +38,15 @@
     });
 
     var voteButtons = directory.querySelectorAll(".travel-unexplored__country");
-    var favoritesList = directory.querySelector("#travel-recommendation-list");
+    var leaderboardList = directory.querySelector("#travel-ranking-list");
     var voteStatus = directory.querySelector("#travel-recommendation-status");
     var voteSummary = directory.querySelector("#travel-recommendation-summary");
     var refreshButton = directory.querySelector("#travel-recommendation-refresh");
     var confirmButton = directory.querySelector("#travel-recommendation-confirm");
+    var selectionCount = directory.querySelector("#travel-selection-count");
+    var selectionLimit = directory.querySelector("#travel-selection-limit");
 
-    if (!voteButtons.length || !favoritesList) {
+    if (!voteButtons.length || !leaderboardList) {
       return;
     }
 
@@ -173,48 +175,54 @@
       });
     }
 
-    function renderFavorites() {
-      var favorites = Object.keys(countries)
+    function renderLeaderboard() {
+      var rankedCountries = Object.keys(countries)
         .filter(function (country) {
           return Number(voteCounts[country] || 0) > 0;
         })
         .sort(function (firstCountry, secondCountry) {
           var countDifference = Number(voteCounts[secondCountry]) - Number(voteCounts[firstCountry]);
           return countDifference || firstCountry.localeCompare(secondCountry);
-        })
-        .slice(0, 6);
+        });
 
-      favoritesList.innerHTML = "";
+      leaderboardList.innerHTML = "";
 
-      if (!favorites.length) {
-        var emptyMessage = document.createElement("span");
-        emptyMessage.className = "travel-recommendations__empty";
-        emptyMessage.textContent = "No votes yet. Be the first to choose a destination.";
-        favoritesList.appendChild(emptyMessage);
+      if (!rankedCountries.length) {
+        var emptyMessage = document.createElement("li");
+        emptyMessage.className = "travel-leaderboard__empty";
+        emptyMessage.textContent = "No confirmed votes yet. Be the first to choose a destination.";
+        leaderboardList.appendChild(emptyMessage);
         return;
       }
 
-      favorites.forEach(function (country) {
+      rankedCountries.forEach(function (country, index) {
         var count = Number(voteCounts[country]);
-        var isSelected = draftCountries.indexOf(country) !== -1;
-        var isAtLimit = draftCountries.length >= maxVotes;
-        var chip = document.createElement("button");
-        chip.className = "travel-recommendation-chip";
-        chip.classList.toggle("is-selected", isSelected);
-        chip.type = "button";
-        chip.textContent = countries[country].flag + " " + country + " · " + count;
-        chip.setAttribute(
+        var item = document.createElement("li");
+        var rank = document.createElement("span");
+        var flag = document.createElement("span");
+        var name = document.createElement("strong");
+        var total = document.createElement("span");
+
+        item.className = "travel-leaderboard__item";
+        item.setAttribute(
           "aria-label",
-          (isSelected ? "Remove " : "Select ") + country + ", currently " + count + (count === 1 ? " vote" : " votes")
+          "Rank " + (index + 1) + ": " + country + ", " + count + (count === 1 ? " vote" : " votes")
         );
-        chip.disabled =
-          directory.getAttribute("data-voting-ready") !== "true" ||
-          isSaving ||
-          (isAtLimit && !isSelected);
-        chip.addEventListener("click", function () {
-          toggleDraftSelection(country);
-        });
-        favoritesList.appendChild(chip);
+        rank.className = "travel-leaderboard__rank";
+        rank.textContent = index + 1;
+        flag.className = "travel-leaderboard__flag";
+        flag.setAttribute("aria-hidden", "true");
+        flag.textContent = countries[country].flag;
+        name.className = "travel-leaderboard__name";
+        name.textContent = country;
+        total.className = "travel-leaderboard__total";
+        total.textContent = count + (count === 1 ? " vote" : " votes");
+
+        item.appendChild(rank);
+        item.appendChild(flag);
+        item.appendChild(name);
+        item.appendChild(total);
+        leaderboardList.appendChild(item);
       });
     }
 
@@ -236,6 +244,14 @@
     }
 
     function renderConfirmButton() {
+      if (selectionCount) {
+        selectionCount.textContent = draftCountries.length;
+      }
+
+      if (selectionLimit) {
+        selectionLimit.textContent = maxVotes;
+      }
+
       if (!confirmButton) {
         return;
       }
@@ -244,12 +260,12 @@
         directory.getAttribute("data-voting-ready") !== "true" ||
         isSaving ||
         selectionsMatch();
-      confirmButton.textContent = isSaving ? "Confirming..." : "Confirm Selection";
+      confirmButton.textContent = isSaving ? "Confirming..." : "Confirm votes";
     }
 
     function renderVoting() {
       renderVoteButtons();
-      renderFavorites();
+      renderLeaderboard();
       renderVoteSummary();
       renderConfirmButton();
     }
@@ -329,7 +345,7 @@
       } finally {
         if (refreshButton) {
           refreshButton.disabled = false;
-          refreshButton.textContent = "Refresh totals";
+          refreshButton.textContent = "Refresh ranking";
         }
       }
     }
@@ -371,7 +387,7 @@
       }
 
       isSaving = true;
-      setVoteStatus("Confirming your selection...", false);
+      setVoteStatus("Confirming your votes...", false);
       renderVoting();
 
       try {
@@ -382,12 +398,12 @@
           }
         });
         applyVoteState(payload);
-        setVoteStatus("Your selection was confirmed.", false);
+        setVoteStatus("Your votes were confirmed.", false);
       } catch (error) {
         setVoteStatus(
           error.code === "vote_limit_reached"
             ? "Choose no more than five destinations."
-            : "We could not confirm your selection. Please try again.",
+            : "We could not confirm your votes. Please try again.",
           true
         );
       } finally {

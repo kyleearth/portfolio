@@ -1,7 +1,13 @@
 # main links links
 main:
+  - title: "Home"
+    url: /
+
   - title: "Publications"
     url: /publications/
+
+  - title: "Travel Footprint"
+    url: /gallery/
 
   # - title: "Talks"
   #   url: /talks/    

@@ -1,0 +1,169 @@
+- name: "China"
+  flag: "🇨🇳"
+  region: "Asia"
+  region_key: "asia"
+
+- name: "Hong Kong"
+  flag: "🇭🇰"
+  region: "Asia"
+  region_key: "asia"
+
+- name: "Macao"
+  flag: "🇲🇴"
+  region: "Asia"
+  region_key: "asia"
+
+- name: "United States"
+  flag: "🇺🇸"
+  region: "Americas"
+  region_key: "americas"
+
+- name: "Canada"
+  flag: "🇨🇦"
+  region: "Americas"
+  region_key: "americas"
+
+- name: "Bermuda"
+  flag: "🇧🇲"
+  region: "Americas"
+  region_key: "americas"
+
+- name: "France"
+  flag: "🇫🇷"
+  region: "Europe"
+  region_key: "europe"
+
+- name: "Germany"
+  flag: "🇩🇪"
+  region: "Europe"
+  region_key: "europe"
+
+- name: "Italy"
+  flag: "🇮🇹"
+  region: "Europe"
+  region_key: "europe"
+
+- name: "Vatican City"
+  flag: "🇻🇦"
+  region: "Europe"
+  region_key: "europe"
+
+- name: "Switzerland"
+  flag: "🇨🇭"
+  region: "Europe"
+  region_key: "europe"
+
+- name: "Bahamas"
+  flag: "🇧🇸"
+  region: "Americas"
+  region_key: "americas"
+
+- name: "Mexico"
+  flag: "🇲🇽"
+  region: "Americas"
+  region_key: "americas"
+
+- name: "Honduras"
+  flag: "🇭🇳"
+  region: "Americas"
+  region_key: "americas"
+
+- name: "Belize"
+  flag: "🇧🇿"
+  region: "Americas"
+  region_key: "americas"
+
+- name: "Thailand"
+  flag: "🇹🇭"
+  region: "Asia"
+  region_key: "asia"
+
+- name: "Malaysia"
+  flag: "🇲🇾"
+  region: "Asia"
+  region_key: "asia"
+
+- name: "Singapore"
+  flag: "🇸🇬"
+  region: "Asia"
+  region_key: "asia"
+
+- name: "Sint Maarten"
+  flag: "🇸🇽"
+  region: "Americas"
+  region_key: "americas"
+
+- name: "Costa Rica"
+  flag: "🇨🇷"
+  region: "Americas"
+  region_key: "americas"
+
+- name: "Japan"
+  flag: "🇯🇵"
+  region: "Asia"
+  region_key: "asia"
+
+- name: "Portugal"
+  flag: "🇵🇹"
+  region: "Europe"
+  region_key: "europe"
+
+- name: "South Korea"
+  flag: "🇰🇷"
+  region: "Asia"
+  region_key: "asia"
+
+- name: "Taiwan"
+  flag: "🇹🇼"
+  region: "Asia"
+  region_key: "asia"
+
+- name: "Spain"
+  flag: "🇪🇸"
+  region: "Europe"
+  region_key: "europe"
+
+- name: "Luxembourg"
+  flag: "🇱🇺"
+  region: "Europe"
+  region_key: "europe"
+
+- name: "Belgium"
+  flag: "🇧🇪"
+  region: "Europe"
+  region_key: "europe"
+
+- name: "Peru"
+  flag: "🇵🇪"
+  region: "Americas"
+  region_key: "americas"
+
+- name: "Puerto Rico"
+  flag: "🇵🇷"
+  region: "Americas"
+  region_key: "americas"
+
+- name: "Denmark"
+  flag: "🇩🇰"
+  region: "Europe"
+  region_key: "europe"
+
+- name: "Sweden"
+  flag: "🇸🇪"
+  region: "Europe"
+  region_key: "europe"
+
+- name: "Norway"
+  flag: "🇳🇴"
+  region: "Europe"
+  region_key: "europe"
+
+- name: "Poland"
+  flag: "🇵🇱"
+  region: "Europe"
+  region_key: "europe"
+
+- name: "Morocco"
+  flag: "🇲🇦"
+  region: "Africa"
+  region_key: "africa"

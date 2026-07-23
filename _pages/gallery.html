@@ -1,0 +1,150 @@
+---
+permalink: /gallery/
+title: "Travel Footprint"
+layout: single
+author_profile: false
+excerpt: "A privacy-conscious record of countries and areas visited."
+---
+
+{% assign travel_places = site.data.travel_gallery %}
+{% assign travel_regions = travel_places | map: "region" | uniq %}
+{% assign world_countries = site.data.world_countries %}
+{% assign world_regions = "Asia,Europe,North America,South America,Oceania,Africa" | split: "," %}
+{% assign visited_country_names = travel_places | map: "name" %}
+{% assign unexplored_count = 0 %}
+{% for country in world_countries %}
+  {% unless visited_country_names contains country.name %}
+    {% assign unexplored_count = unexplored_count | plus: 1 %}
+  {% endunless %}
+{% endfor %}
+
+{% comment %}
+  Add or update destinations in _data/travel_gallery.yml. The page intentionally
+  avoids dates, routes, cities, and precise location details.
+{% endcomment %}
+
+<div class="travel-index" data-travel-directory>
+  <section class="travel-index__overview" aria-labelledby="travel-overview-title">
+    <div class="travel-index__count-block">
+      <p class="section-kicker" id="travel-overview-title">Visited</p>
+      <p class="travel-index__count">
+        <span id="travel-visible-count">{{ travel_places | size }}</span>
+        <small>countries &amp; areas</small>
+      </p>
+    </div>
+    <div class="travel-index__count-block">
+      <p class="section-kicker">Explored</p>
+      <p class="travel-index__count">
+        <span>5</span>
+        <small>continents</small>
+      </p>
+    </div>
+    <div class="travel-index__count-block">
+      <p class="section-kicker">Since</p>
+      <p class="travel-index__count">
+        <span>2013</span>
+        <small>and counting</small>
+      </p>
+    </div>
+    <div class="travel-index__count-block">
+      <p class="section-kicker">Collected</p>
+      <p class="travel-index__count">
+        <span>380</span>
+        <small>magnets</small>
+      </p>
+    </div>
+  </section>
+
+  <section class="travel-directory" aria-label="Visited places by region">
+    <div class="travel-directory__header">
+      <div>
+        <p class="section-kicker">At a glance</p>
+      </div>
+
+      <div class="travel-filters" role="group" aria-label="Filter visited places by region">
+        <button class="travel-filter is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+        {% for region in travel_regions %}
+          <button class="travel-filter" type="button" data-filter="{{ region | slugify }}" aria-pressed="false">{{ region }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <ul class="travel-country-grid" aria-live="polite">
+      {% for place in travel_places %}
+        <li class="travel-country" data-region="{{ place.region_key }}">
+          <span class="travel-country__flag" aria-hidden="true">{{ place.flag }}</span>
+          <span class="travel-country__text">
+            <strong>{{ place.name }}</strong>
+            <small>{{ place.region }}</small>
+          </span>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <details class="travel-unexplored">
+    <summary class="travel-unexplored__summary">
+      <div>
+        <p class="section-kicker">Next horizons</p>
+        <h2>Where should I explore next? Vote for your favorite destination.</h2>
+      </div>
+      <div class="travel-unexplored__total">
+        <strong>{{ unexplored_count }}</strong>
+        <span>countries</span>
+        <em class="travel-unexplored__recommendation-summary" id="travel-recommendation-summary" hidden>0 recommended</em>
+      </div>
+      <i class="fas fa-chevron-down travel-unexplored__chevron" aria-hidden="true"></i>
+    </summary>
+
+    <div class="travel-unexplored__content">
+      <section class="travel-recommendations" aria-labelledby="travel-recommendations-title">
+        <div class="travel-recommendations__heading">
+          <p class="section-kicker" id="travel-recommendations-title">Recommended next</p>
+          <p id="travel-recommendation-status" aria-live="polite">Select any country below to build a travel shortlist.</p>
+        </div>
+        <div class="travel-recommendations__list" id="travel-recommendation-list" aria-live="polite"></div>
+        <button class="travel-recommendations__clear" id="travel-recommendation-clear" type="button" hidden>Clear all</button>
+      </section>
+
+      {% for region in world_regions %}
+        {% assign region_unexplored_count = 0 %}
+        {% for country in world_countries %}
+          {% if country.region == region %}
+            {% unless visited_country_names contains country.name %}
+              {% assign region_unexplored_count = region_unexplored_count | plus: 1 %}
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+
+        <section class="travel-unexplored__region" aria-labelledby="unexplored-{{ region | slugify }}">
+          <div class="travel-unexplored__region-heading">
+            <h3 id="unexplored-{{ region | slugify }}">{{ region }}</h3>
+            <span>{{ region_unexplored_count }}</span>
+          </div>
+          <ul class="travel-unexplored__countries">
+            {% for country in world_countries %}
+              {% if country.region == region %}
+                {% unless visited_country_names contains country.name %}
+                  <li>
+                    <button
+                      class="travel-unexplored__country"
+                      type="button"
+                      data-country="{{ country.name | escape }}"
+                      data-flag="{{ country.flag }}"
+                      aria-pressed="false"
+                      aria-label="Recommend {{ country.name | escape }}">
+                      <span class="travel-unexplored__flag" aria-hidden="true">{{ country.flag }}</span>
+                      <span class="travel-unexplored__name">{{ country.name }}</span>
+                      <span class="travel-unexplored__star" aria-hidden="true">☆</span>
+                    </button>
+                  </li>
+                {% endunless %}
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </section>
+      {% endfor %}
+    </div>
+  </details>
+
+</div>

@@ -1,0 +1,200 @@
+- { name: "Algeria", flag: "🇩🇿", region: "Africa" }
+- { name: "Angola", flag: "🇦🇴", region: "Africa" }
+- { name: "Benin", flag: "🇧🇯", region: "Africa" }
+- { name: "Botswana", flag: "🇧🇼", region: "Africa" }
+- { name: "Burkina Faso", flag: "🇧🇫", region: "Africa" }
+- { name: "Burundi", flag: "🇧🇮", region: "Africa" }
+- { name: "Cabo Verde", flag: "🇨🇻", region: "Africa" }
+- { name: "Cameroon", flag: "🇨🇲", region: "Africa" }
+- { name: "Central African Republic", flag: "🇨🇫", region: "Africa" }
+- { name: "Chad", flag: "🇹🇩", region: "Africa" }
+- { name: "Comoros", flag: "🇰🇲", region: "Africa" }
+- { name: "Democratic Republic of the Congo", flag: "🇨🇩", region: "Africa" }
+- { name: "Republic of the Congo", flag: "🇨🇬", region: "Africa" }
+- { name: "Côte d’Ivoire", flag: "🇨🇮", region: "Africa" }
+- { name: "Djibouti", flag: "🇩🇯", region: "Africa" }
+- { name: "Egypt", flag: "🇪🇬", region: "Africa" }
+- { name: "Equatorial Guinea", flag: "🇬🇶", region: "Africa" }
+- { name: "Eritrea", flag: "🇪🇷", region: "Africa" }
+- { name: "Eswatini", flag: "🇸🇿", region: "Africa" }
+- { name: "Ethiopia", flag: "🇪🇹", region: "Africa" }
+- { name: "Gabon", flag: "🇬🇦", region: "Africa" }
+- { name: "Gambia", flag: "🇬🇲", region: "Africa" }
+- { name: "Ghana", flag: "🇬🇭", region: "Africa" }
+- { name: "Guinea", flag: "🇬🇳", region: "Africa" }
+- { name: "Guinea-Bissau", flag: "🇬🇼", region: "Africa" }
+- { name: "Kenya", flag: "🇰🇪", region: "Africa" }
+- { name: "Lesotho", flag: "🇱🇸", region: "Africa" }
+- { name: "Liberia", flag: "🇱🇷", region: "Africa" }
+- { name: "Libya", flag: "🇱🇾", region: "Africa" }
+- { name: "Madagascar", flag: "🇲🇬", region: "Africa" }
+- { name: "Malawi", flag: "🇲🇼", region: "Africa" }
+- { name: "Mali", flag: "🇲🇱", region: "Africa" }
+- { name: "Mauritania", flag: "🇲🇷", region: "Africa" }
+- { name: "Mauritius", flag: "🇲🇺", region: "Africa" }
+- { name: "Morocco", flag: "🇲🇦", region: "Africa" }
+- { name: "Mozambique", flag: "🇲🇿", region: "Africa" }
+- { name: "Namibia", flag: "🇳🇦", region: "Africa" }
+- { name: "Niger", flag: "🇳🇪", region: "Africa" }
+- { name: "Nigeria", flag: "🇳🇬", region: "Africa" }
+- { name: "Rwanda", flag: "🇷🇼", region: "Africa" }
+- { name: "São Tomé and Príncipe", flag: "🇸🇹", region: "Africa" }
+- { name: "Senegal", flag: "🇸🇳", region: "Africa" }
+- { name: "Seychelles", flag: "🇸🇨", region: "Africa" }
+- { name: "Sierra Leone", flag: "🇸🇱", region: "Africa" }
+- { name: "Somalia", flag: "🇸🇴", region: "Africa" }
+- { name: "South Africa", flag: "🇿🇦", region: "Africa" }
+- { name: "South Sudan", flag: "🇸🇸", region: "Africa" }
+- { name: "Sudan", flag: "🇸🇩", region: "Africa" }
+- { name: "Tanzania", flag: "🇹🇿", region: "Africa" }
+- { name: "Togo", flag: "🇹🇬", region: "Africa" }
+- { name: "Tunisia", flag: "🇹🇳", region: "Africa" }
+- { name: "Uganda", flag: "🇺🇬", region: "Africa" }
+- { name: "Zambia", flag: "🇿🇲", region: "Africa" }
+- { name: "Zimbabwe", flag: "🇿🇼", region: "Africa" }
+
+- { name: "Afghanistan", flag: "🇦🇫", region: "Asia" }
+- { name: "Armenia", flag: "🇦🇲", region: "Asia" }
+- { name: "Azerbaijan", flag: "🇦🇿", region: "Asia" }
+- { name: "Bahrain", flag: "🇧🇭", region: "Asia" }
+- { name: "Bangladesh", flag: "🇧🇩", region: "Asia" }
+- { name: "Bhutan", flag: "🇧🇹", region: "Asia" }
+- { name: "Brunei", flag: "🇧🇳", region: "Asia" }
+- { name: "Cambodia", flag: "🇰🇭", region: "Asia" }
+- { name: "China", flag: "🇨🇳", region: "Asia" }
+- { name: "Cyprus", flag: "🇨🇾", region: "Asia" }
+- { name: "Georgia", flag: "🇬🇪", region: "Asia" }
+- { name: "India", flag: "🇮🇳", region: "Asia" }
+- { name: "Indonesia", flag: "🇮🇩", region: "Asia" }
+- { name: "Iran", flag: "🇮🇷", region: "Asia" }
+- { name: "Iraq", flag: "🇮🇶", region: "Asia" }
+- { name: "Israel", flag: "🇮🇱", region: "Asia" }
+- { name: "Japan", flag: "🇯🇵", region: "Asia" }
+- { name: "Jordan", flag: "🇯🇴", region: "Asia" }
+- { name: "Kazakhstan", flag: "🇰🇿", region: "Asia" }
+- { name: "Kuwait", flag: "🇰🇼", region: "Asia" }
+- { name: "Kyrgyzstan", flag: "🇰🇬", region: "Asia" }
+- { name: "Laos", flag: "🇱🇦", region: "Asia" }
+- { name: "Lebanon", flag: "🇱🇧", region: "Asia" }
+- { name: "Malaysia", flag: "🇲🇾", region: "Asia" }
+- { name: "Maldives", flag: "🇲🇻", region: "Asia" }
+- { name: "Mongolia", flag: "🇲🇳", region: "Asia" }
+- { name: "Myanmar", flag: "🇲🇲", region: "Asia" }
+- { name: "Nepal", flag: "🇳🇵", region: "Asia" }
+- { name: "North Korea", flag: "🇰🇵", region: "Asia" }
+- { name: "Oman", flag: "🇴🇲", region: "Asia" }
+- { name: "Pakistan", flag: "🇵🇰", region: "Asia" }
+- { name: "Palestine", flag: "🇵🇸", region: "Asia" }
+- { name: "Philippines", flag: "🇵🇭", region: "Asia" }
+- { name: "Qatar", flag: "🇶🇦", region: "Asia" }
+- { name: "Saudi Arabia", flag: "🇸🇦", region: "Asia" }
+- { name: "Singapore", flag: "🇸🇬", region: "Asia" }
+- { name: "South Korea", flag: "🇰🇷", region: "Asia" }
+- { name: "Sri Lanka", flag: "🇱🇰", region: "Asia" }
+- { name: "Syria", flag: "🇸🇾", region: "Asia" }
+- { name: "Tajikistan", flag: "🇹🇯", region: "Asia" }
+- { name: "Thailand", flag: "🇹🇭", region: "Asia" }
+- { name: "Timor-Leste", flag: "🇹🇱", region: "Asia" }
+- { name: "Türkiye", flag: "🇹🇷", region: "Asia" }
+- { name: "Turkmenistan", flag: "🇹🇲", region: "Asia" }
+- { name: "United Arab Emirates", flag: "🇦🇪", region: "Asia" }
+- { name: "Uzbekistan", flag: "🇺🇿", region: "Asia" }
+- { name: "Vietnam", flag: "🇻🇳", region: "Asia" }
+- { name: "Yemen", flag: "🇾🇪", region: "Asia" }
+
+- { name: "Albania", flag: "🇦🇱", region: "Europe" }
+- { name: "Andorra", flag: "🇦🇩", region: "Europe" }
+- { name: "Austria", flag: "🇦🇹", region: "Europe" }
+- { name: "Belarus", flag: "🇧🇾", region: "Europe" }
+- { name: "Belgium", flag: "🇧🇪", region: "Europe" }
+- { name: "Bosnia and Herzegovina", flag: "🇧🇦", region: "Europe" }
+- { name: "Bulgaria", flag: "🇧🇬", region: "Europe" }
+- { name: "Croatia", flag: "🇭🇷", region: "Europe" }
+- { name: "Czechia", flag: "🇨🇿", region: "Europe" }
+- { name: "Denmark", flag: "🇩🇰", region: "Europe" }
+- { name: "Estonia", flag: "🇪🇪", region: "Europe" }
+- { name: "Finland", flag: "🇫🇮", region: "Europe" }
+- { name: "France", flag: "🇫🇷", region: "Europe" }
+- { name: "Germany", flag: "🇩🇪", region: "Europe" }
+- { name: "Greece", flag: "🇬🇷", region: "Europe" }
+- { name: "Vatican City", flag: "🇻🇦", region: "Europe" }
+- { name: "Hungary", flag: "🇭🇺", region: "Europe" }
+- { name: "Iceland", flag: "🇮🇸", region: "Europe" }
+- { name: "Ireland", flag: "🇮🇪", region: "Europe" }
+- { name: "Italy", flag: "🇮🇹", region: "Europe" }
+- { name: "Latvia", flag: "🇱🇻", region: "Europe" }
+- { name: "Liechtenstein", flag: "🇱🇮", region: "Europe" }
+- { name: "Lithuania", flag: "🇱🇹", region: "Europe" }
+- { name: "Luxembourg", flag: "🇱🇺", region: "Europe" }
+- { name: "Malta", flag: "🇲🇹", region: "Europe" }
+- { name: "Moldova", flag: "🇲🇩", region: "Europe" }
+- { name: "Monaco", flag: "🇲🇨", region: "Europe" }
+- { name: "Montenegro", flag: "🇲🇪", region: "Europe" }
+- { name: "Netherlands", flag: "🇳🇱", region: "Europe" }
+- { name: "North Macedonia", flag: "🇲🇰", region: "Europe" }
+- { name: "Norway", flag: "🇳🇴", region: "Europe" }
+- { name: "Poland", flag: "🇵🇱", region: "Europe" }
+- { name: "Portugal", flag: "🇵🇹", region: "Europe" }
+- { name: "Romania", flag: "🇷🇴", region: "Europe" }
+- { name: "Russia", flag: "🇷🇺", region: "Europe" }
+- { name: "San Marino", flag: "🇸🇲", region: "Europe" }
+- { name: "Serbia", flag: "🇷🇸", region: "Europe" }
+- { name: "Slovakia", flag: "🇸🇰", region: "Europe" }
+- { name: "Slovenia", flag: "🇸🇮", region: "Europe" }
+- { name: "Spain", flag: "🇪🇸", region: "Europe" }
+- { name: "Sweden", flag: "🇸🇪", region: "Europe" }
+- { name: "Switzerland", flag: "🇨🇭", region: "Europe" }
+- { name: "Ukraine", flag: "🇺🇦", region: "Europe" }
+- { name: "United Kingdom", flag: "🇬🇧", region: "Europe" }
+
+- { name: "Antigua and Barbuda", flag: "🇦🇬", region: "North America" }
+- { name: "Bahamas", flag: "🇧🇸", region: "North America" }
+- { name: "Barbados", flag: "🇧🇧", region: "North America" }
+- { name: "Belize", flag: "🇧🇿", region: "North America" }
+- { name: "Canada", flag: "🇨🇦", region: "North America" }
+- { name: "Costa Rica", flag: "🇨🇷", region: "North America" }
+- { name: "Cuba", flag: "🇨🇺", region: "North America" }
+- { name: "Dominica", flag: "🇩🇲", region: "North America" }
+- { name: "Dominican Republic", flag: "🇩🇴", region: "North America" }
+- { name: "El Salvador", flag: "🇸🇻", region: "North America" }
+- { name: "Grenada", flag: "🇬🇩", region: "North America" }
+- { name: "Guatemala", flag: "🇬🇹", region: "North America" }
+- { name: "Haiti", flag: "🇭🇹", region: "North America" }
+- { name: "Honduras", flag: "🇭🇳", region: "North America" }
+- { name: "Jamaica", flag: "🇯🇲", region: "North America" }
+- { name: "Mexico", flag: "🇲🇽", region: "North America" }
+- { name: "Nicaragua", flag: "🇳🇮", region: "North America" }
+- { name: "Panama", flag: "🇵🇦", region: "North America" }
+- { name: "Saint Kitts and Nevis", flag: "🇰🇳", region: "North America" }
+- { name: "Saint Lucia", flag: "🇱🇨", region: "North America" }
+- { name: "Saint Vincent and the Grenadines", flag: "🇻🇨", region: "North America" }
+- { name: "Trinidad and Tobago", flag: "🇹🇹", region: "North America" }
+- { name: "United States", flag: "🇺🇸", region: "North America" }
+
+- { name: "Argentina", flag: "🇦🇷", region: "South America" }
+- { name: "Bolivia", flag: "🇧🇴", region: "South America" }
+- { name: "Brazil", flag: "🇧🇷", region: "South America" }
+- { name: "Chile", flag: "🇨🇱", region: "South America" }
+- { name: "Colombia", flag: "🇨🇴", region: "South America" }
+- { name: "Ecuador", flag: "🇪🇨", region: "South America" }
+- { name: "Guyana", flag: "🇬🇾", region: "South America" }
+- { name: "Paraguay", flag: "🇵🇾", region: "South America" }
+- { name: "Peru", flag: "🇵🇪", region: "South America" }
+- { name: "Suriname", flag: "🇸🇷", region: "South America" }
+- { name: "Uruguay", flag: "🇺🇾", region: "South America" }
+- { name: "Venezuela", flag: "🇻🇪", region: "South America" }
+
+- { name: "Australia", flag: "🇦🇺", region: "Oceania" }
+- { name: "Fiji", flag: "🇫🇯", region: "Oceania" }
+- { name: "Kiribati", flag: "🇰🇮", region: "Oceania" }
+- { name: "Marshall Islands", flag: "🇲🇭", region: "Oceania" }
+- { name: "Micronesia", flag: "🇫🇲", region: "Oceania" }
+- { name: "Nauru", flag: "🇳🇷", region: "Oceania" }
+- { name: "New Zealand", flag: "🇳🇿", region: "Oceania" }
+- { name: "Palau", flag: "🇵🇼", region: "Oceania" }
+- { name: "Papua New Guinea", flag: "🇵🇬", region: "Oceania" }
+- { name: "Samoa", flag: "🇼🇸", region: "Oceania" }
+- { name: "Solomon Islands", flag: "🇸🇧", region: "Oceania" }
+- { name: "Tonga", flag: "🇹🇴", region: "Oceania" }
+- { name: "Tuvalu", flag: "🇹🇻", region: "Oceania" }
+- { name: "Vanuatu", flag: "🇻🇺", region: "Oceania" }

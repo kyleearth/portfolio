@@ -3,3 +3,14 @@ _site/
 
 # Ignore the Gemfile that is generated
 Gemfile.lock
+
+# Local development and generated files
+.bundle/
+.idea/
+.jekyll-cache/
+.sass-cache/
+.DS_Store
+vendor/
+
+# Unused generated travel artwork from an earlier gallery design
+images/travel/

@@ -7,10 +7,10 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Home"
+title                    : "Kyle Wang"
 title_separator          : "-"
 name                     : &name "Kyle Wang"
-description              : &description "personal description"
+description              : &description "Human-centered AI, HCI, and data science research for academic and industry collaboration."
 url                      : https://kyleearth.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "kyleearth/kyleearth.github.io"
@@ -19,7 +19,7 @@ repository               : "kyleearth/kyleearth.github.io"
 author:
   name             : "Kyle Wang"
   avatar           : "profilekw.png"
-  bio              : "Computer Science Ph.D. Cadidate"
+  bio              : "Computer Science Ph.D. Candidate"
   pronouns         : # example: "she/her"
   location         : "New York Metropolitan Area"
   orcid            : "https://orcid.org/0000-0003-0308-6033"

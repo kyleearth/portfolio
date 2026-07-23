@@ -52,6 +52,7 @@
     var supabaseKey = directory.getAttribute("data-supabase-key");
     var countries = {};
     var voteCounts = {};
+    var participantCount = null;
     var confirmedCountries = [];
     var draftCountries = [];
     var maxVotes = 5;
@@ -222,12 +223,16 @@
         return;
       }
 
-      var totalVotes = Object.keys(voteCounts).reduce(function (total, country) {
-        return total + Number(voteCounts[country] || 0);
-      }, 0);
+      voteSummary.hidden = participantCount === null;
 
-      voteSummary.hidden = false;
-      voteSummary.textContent = totalVotes + (totalVotes === 1 ? " community vote" : " community votes");
+      if (participantCount === null) {
+        return;
+      }
+
+      voteSummary.textContent =
+        participantCount === 1
+          ? "1 person voted so far"
+          : participantCount + " people voted so far";
     }
 
     function renderConfirmButton() {
@@ -263,6 +268,10 @@
       confirmedCountries = (payload.selected || []).filter(function (country, index, selections) {
         return Boolean(countries[country]) && selections.indexOf(country) === index;
       });
+      participantCount =
+        typeof payload.participant_count === "number"
+          ? Math.max(0, payload.participant_count)
+          : null;
       draftCountries = confirmedCountries.slice();
       maxVotes = Number(payload.max_votes || 5);
     }

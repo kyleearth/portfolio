@@ -146,17 +146,23 @@ Deno.serve(async (request) => {
   });
 
   async function getVoteState() {
-    const [totalsResponse, selectionsResponse] = await Promise.all([
-      supabaseAdmin.rpc("get_travel_vote_totals"),
-      supabaseAdmin
-        .from("travel_votes")
-        .select("destination")
-        .eq("ip_hash", ipHash)
-        .order("destination"),
-    ]);
+    const [totalsResponse, participantCountResponse, selectionsResponse] =
+      await Promise.all([
+        supabaseAdmin.rpc("get_travel_vote_totals"),
+        supabaseAdmin.rpc("get_travel_voter_count"),
+        supabaseAdmin
+          .from("travel_votes")
+          .select("destination")
+          .eq("ip_hash", ipHash)
+          .order("destination"),
+      ]);
 
     if (totalsResponse.error) {
       throw totalsResponse.error;
+    }
+
+    if (participantCountResponse.error) {
+      throw participantCountResponse.error;
     }
 
     if (selectionsResponse.error) {
@@ -169,6 +175,7 @@ Deno.serve(async (request) => {
 
     return {
       totals: totalsResponse.data || [],
+      participant_count: Number(participantCountResponse.data || 0),
       selected,
       active_votes: selected.length,
       remaining_votes: Math.max(0, MAX_VOTES_PER_IP - selected.length),

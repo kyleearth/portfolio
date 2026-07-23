@@ -1042,8 +1042,7 @@ a.profile-links-card__item {
 
 .travel-recommendations {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.8rem 1rem;
+  gap: 0.85rem;
   align-items: center;
   margin-top: 1.4rem;
   padding: 1rem 1.1rem;
@@ -1052,28 +1051,17 @@ a.profile-links-card__item {
   background: linear-gradient(135deg, rgba(252, 245, 236, 0.82), rgba(255, 255, 255, 0.7));
 }
 
-.travel-recommendations__heading .section-kicker {
-  margin-bottom: 0.25rem;
-}
-
-.travel-recommendations__heading {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.travel-recommendations__heading p:last-child {
+.travel-recommendations__status {
   margin: 0;
   color: #516c78;
   font-size: 0.82rem;
 }
 
-.travel-recommendations__heading p:last-child.is-error {
+.travel-recommendations__status.is-error {
   color: #9a3f32;
 }
 
 .travel-recommendations__list {
-  grid-column: 1 / -1;
-  grid-row: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
@@ -1106,9 +1094,14 @@ a.profile-links-card__item {
   font-size: 0.76rem;
 }
 
+.travel-recommendations__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.7rem;
+}
+
 .travel-recommendations__refresh {
-  grid-column: 2;
-  grid-row: 1;
   padding: 0.45rem 0.7rem;
   border: 0;
   background: transparent;
@@ -1121,6 +1114,35 @@ a.profile-links-card__item {
 .travel-recommendations__refresh:disabled {
   cursor: wait;
   opacity: 0.55;
+}
+
+.travel-recommendations__confirm {
+  min-width: 9.5rem;
+  padding: 0.62rem 0.9rem;
+  border: 1px solid #9b5c2d;
+  border-radius: 999px;
+  background: #9b5c2d;
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.travel-recommendations__confirm:hover,
+.travel-recommendations__confirm:focus {
+  transform: translateY(-1px);
+  background: #82491f;
+  box-shadow: 0 8px 18px rgba(130, 73, 31, 0.2);
+}
+
+.travel-recommendations__confirm:disabled {
+  cursor: not-allowed;
+  transform: none;
+  border-color: rgba(49, 80, 95, 0.16);
+  background: rgba(49, 80, 95, 0.11);
+  color: #718690;
+  box-shadow: none;
 }
 
 .travel-unexplored__region {
@@ -1476,11 +1498,18 @@ a.profile-links-card__item {
     grid-template-columns: 1fr;
   }
 
+  .travel-recommendations__actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+
   .travel-recommendations__refresh {
-    grid-column: 1;
-    grid-row: 3;
-    justify-self: start;
     padding-left: 0;
+    text-align: center;
+  }
+
+  .travel-recommendations__confirm {
+    width: 100%;
   }
 
   .travel-unexplored__countries {

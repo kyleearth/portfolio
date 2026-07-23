@@ -177,6 +177,50 @@ Deno.serve(async (request) => {
     }
 
     const payload = await request.json();
+
+    if (Array.isArray(payload.destinations)) {
+      const destinations = payload.destinations
+        .filter((destination): destination is string =>
+          typeof destination === "string"
+        )
+        .map((destination) => destination.trim());
+      const uniqueDestinations = [...new Set(destinations)];
+
+      if (
+        destinations.length !== payload.destinations.length ||
+        uniqueDestinations.length > MAX_VOTES_PER_IP ||
+        uniqueDestinations.some(
+          (destination) =>
+            destination.length < 1 || destination.length > 100,
+        )
+      ) {
+        return jsonResponse(request, { error: "invalid_selection" }, 400);
+      }
+
+      const replaceResponse = await supabaseAdmin.rpc("replace_travel_votes", {
+        p_ip_hash: ipHash,
+        p_destinations: uniqueDestinations,
+      });
+
+      if (replaceResponse.error) {
+        if (replaceResponse.error.message.includes("VOTE_LIMIT_REACHED")) {
+          return jsonResponse(
+            request,
+            {
+              error: "vote_limit_reached",
+              message: "Choose no more than five destinations.",
+              max_votes: MAX_VOTES_PER_IP,
+            },
+            429,
+          );
+        }
+
+        throw replaceResponse.error;
+      }
+
+      return jsonResponse(request, await getVoteState());
+    }
+
     const destination =
       typeof payload.destination === "string" ? payload.destination.trim() : "";
     const selected = payload.selected;

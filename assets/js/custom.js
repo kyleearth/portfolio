@@ -42,6 +42,7 @@
     var voteStatus = directory.querySelector("#travel-recommendation-status");
     var voteSummary = directory.querySelector("#travel-recommendation-summary");
     var refreshButton = directory.querySelector("#travel-recommendation-refresh");
+    var confirmButton = directory.querySelector("#travel-recommendation-confirm");
 
     if (!voteButtons.length || !favoritesList) {
       return;
@@ -51,9 +52,10 @@
     var supabaseKey = directory.getAttribute("data-supabase-key");
     var countries = {};
     var voteCounts = {};
-    var selectedCountries = [];
-    var busyCountries = {};
+    var confirmedCountries = [];
+    var draftCountries = [];
     var maxVotes = 5;
+    var isSaving = false;
 
     voteButtons.forEach(function (button) {
       var country = button.getAttribute("data-country");
@@ -70,39 +72,44 @@
       }
 
       voteStatus.textContent = message;
+      voteStatus.hidden = !message;
       voteStatus.classList.toggle("is-error", Boolean(isError));
     }
 
     function setVotingReady(isReady) {
       directory.setAttribute("data-voting-ready", isReady ? "true" : "false");
+    }
 
-      voteButtons.forEach(function (button) {
-        var country = button.getAttribute("data-country");
-        button.disabled = !isReady || Boolean(busyCountries[country]);
+    function selectionsMatch() {
+      if (confirmedCountries.length !== draftCountries.length) {
+        return false;
+      }
+
+      return confirmedCountries.every(function (country) {
+        return draftCountries.indexOf(country) !== -1;
       });
     }
 
     function renderVoteButtons() {
       var isReady = directory.getAttribute("data-voting-ready") === "true";
-      var isAtLimit = selectedCountries.length >= maxVotes;
+      var isAtLimit = draftCountries.length >= maxVotes;
 
       voteButtons.forEach(function (button) {
         var country = button.getAttribute("data-country");
         var count = Number(voteCounts[country] || 0);
-        var isSelected = selectedCountries.indexOf(country) !== -1;
-        var isBusy = Boolean(busyCountries[country]);
+        var isSelected = draftCountries.indexOf(country) !== -1;
         var countElement = button.querySelector("[data-vote-count]");
         var labelElement = button.querySelector("[data-vote-label]");
         var star = button.querySelector(".travel-unexplored__star");
 
         button.classList.toggle("is-recommended", isSelected);
-        button.classList.toggle("is-loading", isBusy);
+        button.classList.toggle("is-loading", isSaving);
         button.setAttribute("aria-pressed", isSelected ? "true" : "false");
         button.setAttribute(
           "aria-label",
-          (isSelected ? "Remove your vote from " : "Vote for ") + country + ". " + count + (count === 1 ? " vote." : " votes.")
+          (isSelected ? "Remove " : "Select ") + country + ". " + count + (count === 1 ? " vote." : " votes.")
         );
-        button.disabled = !isReady || isBusy || (isAtLimit && !isSelected);
+        button.disabled = !isReady || isSaving || (isAtLimit && !isSelected);
 
         if (countElement) {
           countElement.textContent = count;
@@ -113,7 +120,7 @@
         }
 
         if (star) {
-          star.textContent = isBusy ? "…" : isSelected ? "★" : "☆";
+          star.textContent = isSaving ? "…" : isSelected ? "★" : "☆";
         }
       });
     }
@@ -141,20 +148,23 @@
 
       favorites.forEach(function (country) {
         var count = Number(voteCounts[country]);
-        var isSelected = selectedCountries.indexOf(country) !== -1;
-        var isAtLimit = selectedCountries.length >= maxVotes;
+        var isSelected = draftCountries.indexOf(country) !== -1;
+        var isAtLimit = draftCountries.length >= maxVotes;
         var chip = document.createElement("button");
         chip.className = "travel-recommendation-chip";
         chip.classList.toggle("is-selected", isSelected);
         chip.type = "button";
         chip.textContent = countries[country].flag + " " + country + " · " + count;
-        chip.setAttribute("aria-label", "Vote for " + country + ", currently " + count + (count === 1 ? " vote" : " votes"));
+        chip.setAttribute(
+          "aria-label",
+          (isSelected ? "Remove " : "Select ") + country + ", currently " + count + (count === 1 ? " vote" : " votes")
+        );
         chip.disabled =
           directory.getAttribute("data-voting-ready") !== "true" ||
-          Boolean(busyCountries[country]) ||
+          isSaving ||
           (isAtLimit && !isSelected);
         chip.addEventListener("click", function () {
-          toggleVote(country);
+          toggleDraftSelection(country);
         });
         favoritesList.appendChild(chip);
       });
@@ -173,10 +183,23 @@
       voteSummary.textContent = totalVotes + (totalVotes === 1 ? " community vote" : " community votes");
     }
 
+    function renderConfirmButton() {
+      if (!confirmButton) {
+        return;
+      }
+
+      confirmButton.disabled =
+        directory.getAttribute("data-voting-ready") !== "true" ||
+        isSaving ||
+        selectionsMatch();
+      confirmButton.textContent = isSaving ? "Confirming..." : "Confirm Selection";
+    }
+
     function renderVoting() {
       renderVoteButtons();
       renderFavorites();
       renderVoteSummary();
+      renderConfirmButton();
     }
 
     function applyVoteState(payload) {
@@ -190,24 +213,11 @@
         }
       });
 
-      selectedCountries = (payload.selected || []).filter(function (country) {
-        return Boolean(countries[country]);
+      confirmedCountries = (payload.selected || []).filter(function (country, index, selections) {
+        return Boolean(countries[country]) && selections.indexOf(country) === index;
       });
+      draftCountries = confirmedCountries.slice();
       maxVotes = Number(payload.max_votes || 5);
-    }
-
-    function getSelectionStatus(prefix) {
-      var activeVotes = selectedCountries.length;
-      var remainingVotes = Math.max(0, maxVotes - activeVotes);
-      var message = activeVotes + " of " + maxVotes + " votes used.";
-
-      if (remainingVotes > 0) {
-        message += " You can choose " + remainingVotes + (remainingVotes === 1 ? " more destination." : " more destinations.");
-      } else {
-        message += " Remove a selected destination before choosing another.";
-      }
-
-      return prefix ? prefix + " " + message : message;
     }
 
     async function requestVoteState(options) {
@@ -238,6 +248,10 @@
         return false;
       }
 
+      setVotingReady(false);
+      setVoteStatus(announceRefresh ? "Refreshing live totals..." : "Loading live vote totals...", false);
+      renderVoting();
+
       if (refreshButton) {
         refreshButton.disabled = true;
         refreshButton.textContent = "Refreshing...";
@@ -248,10 +262,7 @@
         applyVoteState(payload);
         setVotingReady(true);
         renderVoting();
-        setVoteStatus(
-          getSelectionStatus(announceRefresh ? "Live totals refreshed." : "Choose up to five destinations."),
-          false
-        );
+        setVoteStatus(announceRefresh ? "Live totals refreshed." : "", false);
         return true;
       } catch (error) {
         setVotingReady(false);
@@ -266,55 +277,71 @@
       }
     }
 
-    async function toggleVote(country) {
-      if (!voteEndpoint || busyCountries[country] || directory.getAttribute("data-voting-ready") !== "true") {
+    function toggleDraftSelection(country) {
+      if (
+        !countries[country] ||
+        isSaving ||
+        directory.getAttribute("data-voting-ready") !== "true"
+      ) {
         return;
       }
 
-      var shouldSelect = selectedCountries.indexOf(country) === -1;
+      var selectedIndex = draftCountries.indexOf(country);
 
-      if (shouldSelect && selectedCountries.length >= maxVotes) {
-        setVoteStatus("This network has already used all five votes. Remove one before choosing another.", true);
+      if (selectedIndex === -1 && draftCountries.length >= maxVotes) {
+        setVoteStatus("Choose no more than five destinations.", true);
         return;
       }
 
-      busyCountries[country] = true;
+      if (selectedIndex === -1) {
+        draftCountries.push(country);
+      } else {
+        draftCountries.splice(selectedIndex, 1);
+      }
+
+      setVoteStatus("", false);
       renderVoting();
-      setVoteStatus(shouldSelect ? "Recording your vote..." : "Removing your vote...", false);
+    }
+
+    async function confirmSelection() {
+      if (
+        !voteEndpoint ||
+        isSaving ||
+        selectionsMatch() ||
+        directory.getAttribute("data-voting-ready") !== "true"
+      ) {
+        return;
+      }
+
+      isSaving = true;
+      setVoteStatus("Confirming your selection...", false);
+      renderVoting();
 
       try {
         var payload = await requestVoteState({
           method: "POST",
           body: {
-            destination: country,
-            selected: shouldSelect
+            destinations: draftCountries.slice()
           }
         });
         applyVoteState(payload);
-        setVoteStatus(
-          getSelectionStatus(
-            shouldSelect
-              ? "Your vote for " + country + " was counted."
-              : "Your vote for " + country + " was removed."
-          ),
-          false
-        );
+        setVoteStatus("Your selection was confirmed.", false);
       } catch (error) {
         setVoteStatus(
           error.code === "vote_limit_reached"
-            ? "This network has already used all five votes. Remove one before choosing another."
-            : "We could not record that vote. Please try again.",
+            ? "Choose no more than five destinations."
+            : "We could not confirm your selection. Please try again.",
           true
         );
       } finally {
-        delete busyCountries[country];
+        isSaving = false;
         renderVoting();
       }
     }
 
     voteButtons.forEach(function (button) {
       button.addEventListener("click", function () {
-        toggleVote(button.getAttribute("data-country"));
+        toggleDraftSelection(button.getAttribute("data-country"));
       });
     });
 
@@ -322,6 +349,10 @@
       refreshButton.addEventListener("click", function () {
         loadVoteData(true);
       });
+    }
+
+    if (confirmButton) {
+      confirmButton.addEventListener("click", confirmSelection);
     }
 
     if (!voteEndpoint || !supabaseKey || typeof window.fetch !== "function") {

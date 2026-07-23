@@ -104,15 +104,15 @@ excerpt: "A privacy-conscious record of countries and areas visited."
     </summary>
 
     <div class="travel-unexplored__content">
-      <section class="travel-recommendations" aria-labelledby="travel-recommendations-title">
-        <div class="travel-recommendations__heading">
-          <p class="section-kicker" id="travel-recommendations-title">Community favorites</p>
-          <p id="travel-recommendation-status" aria-live="polite">Loading live vote totals and your available votes...</p>
-        </div>
+      <section class="travel-recommendations" aria-label="Travel destination voting">
+        <p class="travel-recommendations__status" id="travel-recommendation-status" aria-live="polite">Loading live vote totals...</p>
         <div class="travel-recommendations__list" id="travel-recommendation-list" aria-live="polite">
           <span class="travel-recommendations__empty">No votes yet. Be the first to choose a destination.</span>
         </div>
-        <button class="travel-recommendations__refresh" id="travel-recommendation-refresh" type="button">Refresh totals</button>
+        <div class="travel-recommendations__actions">
+          <button class="travel-recommendations__refresh" id="travel-recommendation-refresh" type="button">Refresh totals</button>
+          <button class="travel-recommendations__confirm" id="travel-recommendation-confirm" type="button" disabled>Confirm Selection</button>
+        </div>
       </section>
 
       {% for region in world_regions %}

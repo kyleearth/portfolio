@@ -14,7 +14,7 @@ function getCorsHeaders(request: Request) {
     "Access-Control-Allow-Origin": allowedOrigins.has(origin)
       ? origin
       : "https://kyleearth.github.io",
-    "Access-Control-Allow-Headers": "apikey, content-type",
+    "Access-Control-Allow-Headers": "apikey, content-type, x-voter-id",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Cache-Control": "no-store",
     "Content-Type": "application/json",
@@ -66,21 +66,26 @@ function hasValidPublishableKey(request: Request) {
 }
 
 function getClientIp(request: Request) {
-  const cloudflareIp = request.headers.get("cf-connecting-ip")?.trim();
-
-  if (cloudflareIp) {
-    return cloudflareIp;
-  }
-
   const forwardedIp = request.headers
     .get("x-forwarded-for")
     ?.split(",")[0]
     ?.trim();
 
-  return forwardedIp || request.headers.get("x-real-ip")?.trim() || "";
+  return (
+    forwardedIp ||
+    request.headers.get("x-real-ip")?.trim() ||
+    request.headers.get("cf-connecting-ip")?.trim() ||
+    ""
+  );
 }
 
-async function hashIpAddress(ipAddress: string, salt: string) {
+function getBrowserVoterId(request: Request) {
+  const voterId = request.headers.get("x-voter-id")?.trim().toLowerCase() || "";
+
+  return /^[a-f0-9-]{32,36}$/.test(voterId) ? voterId : "";
+}
+
+async function hashVoterIdentity(identity: string, salt: string) {
   const encoder = new TextEncoder();
   const key = await crypto.subtle.importKey(
     "raw",
@@ -92,7 +97,7 @@ async function hashIpAddress(ipAddress: string, salt: string) {
   const signature = await crypto.subtle.sign(
     "HMAC",
     key,
-    encoder.encode(ipAddress),
+    encoder.encode(identity),
   );
 
   return Array.from(new Uint8Array(signature))
@@ -119,6 +124,7 @@ Deno.serve(async (request) => {
   const secretKey = getSecretKey();
   const ipHashSalt = Deno.env.get("IP_HASH_SALT") || "";
   const clientIp = getClientIp(request);
+  const browserVoterId = getBrowserVoterId(request);
 
   if (!supabaseUrl || !secretKey || ipHashSalt.length < 32) {
     return jsonResponse(request, { error: "server_not_configured" }, 500);
@@ -128,7 +134,10 @@ Deno.serve(async (request) => {
     return jsonResponse(request, { error: "client_ip_unavailable" }, 400);
   }
 
-  const ipHash = await hashIpAddress(clientIp, ipHashSalt);
+  // Combining the network address with an anonymous browser ID prevents
+  // everyone behind one router or campus network from sharing one ballot.
+  const voterIdentity = `${clientIp}|${browserVoterId || "legacy"}`;
+  const ipHash = await hashVoterIdentity(voterIdentity, ipHashSalt);
   const supabaseAdmin = createClient(supabaseUrl, secretKey, {
     auth: {
       autoRefreshToken: false,

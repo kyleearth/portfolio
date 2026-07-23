@@ -56,6 +56,8 @@
     var draftCountries = [];
     var maxVotes = 5;
     var isSaving = false;
+    var voterStorageKey = "travel-footprint-voter-id";
+    var browserVoterId = "";
 
     voteButtons.forEach(function (button) {
       var country = button.getAttribute("data-country");
@@ -88,6 +90,50 @@
       return confirmedCountries.every(function (country) {
         return draftCountries.indexOf(country) !== -1;
       });
+    }
+
+    function createBrowserVoterId() {
+      if (window.crypto && typeof window.crypto.randomUUID === "function") {
+        return window.crypto.randomUUID().toLowerCase();
+      }
+
+      var bytes = new Uint8Array(16);
+
+      if (window.crypto && typeof window.crypto.getRandomValues === "function") {
+        window.crypto.getRandomValues(bytes);
+      } else {
+        bytes.forEach(function (_value, index) {
+          bytes[index] = Math.floor(Math.random() * 256);
+        });
+      }
+
+      return Array.from(bytes)
+        .map(function (byte) {
+          return byte.toString(16).padStart(2, "0");
+        })
+        .join("");
+    }
+
+    function getBrowserVoterId() {
+      if (browserVoterId) {
+        return browserVoterId;
+      }
+
+      try {
+        var storedVoterId = window.localStorage.getItem(voterStorageKey) || "";
+
+        if (/^[a-f0-9-]{32,36}$/.test(storedVoterId)) {
+          browserVoterId = storedVoterId;
+          return browserVoterId;
+        }
+
+        browserVoterId = createBrowserVoterId();
+        window.localStorage.setItem(voterStorageKey, browserVoterId);
+      } catch (_error) {
+        browserVoterId = createBrowserVoterId();
+      }
+
+      return browserVoterId;
     }
 
     function renderVoteButtons() {
@@ -220,7 +266,8 @@
         method: options && options.method ? options.method : "GET",
         headers: {
           apikey: supabaseKey,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "x-voter-id": getBrowserVoterId()
         },
         body: options && options.body ? JSON.stringify(options.body) : undefined,
         cache: "no-store",

@@ -53,7 +53,7 @@ npx supabase secrets set IP_HASH_SALT="$(openssl rand -hex 32)" --project-ref us
 npx supabase functions deploy travel-vote --project-ref usvuxozvlrtahmuxrija --no-verify-jwt
 ```
 
-The browser uses only the Supabase publishable key. Never add a secret key or service-role key to this repository. The Edge Function creates a one-way HMAC hash of the request IP and enforces a maximum of five active votes per hash. The database stores only that hash, destination name, and timestamp; it does not store raw IP addresses, names, email addresses, routes, or precise locations.
+The browser uses only the Supabase publishable key. Never add a secret key or service-role key to this repository. The Edge Function combines the visitor address from Supabase's forwarded IP header with an anonymous browser ID, creates a one-way HMAC hash, and enforces a maximum of five active votes per visitor hash. This keeps people on the same shared network from sharing one ballot. The database stores only the hash, destination name, and timestamp; it does not store raw IP addresses, browser IDs, names, email addresses, routes, or precise locations.
 
 ## Publish
 

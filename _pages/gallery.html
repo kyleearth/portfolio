@@ -124,6 +124,18 @@ excerpt: "A curated overview of the countries and regions I have explored."
             <h3>Cast your vote</h3>
             <p>Select up to five destinations below, then confirm your choices.</p>
           </div>
+          <div class="travel-ballot__search" role="search">
+            <label for="travel-country-search">Search</label>
+            <div class="travel-ballot__search-field">
+              <i class="fas fa-search" aria-hidden="true"></i>
+              <input
+                id="travel-country-search"
+                type="search"
+                placeholder="Find destination"
+                autocomplete="off"
+                spellcheck="false">
+            </div>
+          </div>
           <div class="travel-ballot__selection" aria-live="polite">
             <strong id="travel-selection-count">0</strong>
             <span>of <span id="travel-selection-limit">5</span> selected</span>
@@ -132,22 +144,13 @@ excerpt: "A curated overview of the countries and regions I have explored."
         </summary>
 
         <div class="travel-ballot__content">
-          <div class="travel-ballot__search">
-            <label for="travel-country-search">Search destinations</label>
-            <div class="travel-ballot__search-field">
-              <i class="fas fa-search" aria-hidden="true"></i>
-              <input
-                id="travel-country-search"
-                type="search"
-                placeholder="Search a country or area"
-                autocomplete="off"
-                spellcheck="false">
-            </div>
-            <p class="travel-ballot__search-feedback" id="travel-country-search-feedback" aria-live="polite" hidden></p>
-          </div>
+          <p class="travel-ballot__search-feedback" id="travel-country-search-feedback" aria-live="polite" hidden></p>
 
           <div class="travel-ballot__actions">
-            <p class="travel-ballot__status" id="travel-recommendation-status" aria-live="polite">Loading voting options...</p>
+            <div>
+              <p class="travel-ballot__hint">Click destinations to add them to your ballot, then confirm to submit.</p>
+              <p class="travel-ballot__status" id="travel-recommendation-status" aria-live="polite">Loading voting options...</p>
+            </div>
             <button class="travel-ballot__confirm" id="travel-recommendation-confirm" type="button" disabled>Confirm votes</button>
           </div>
 

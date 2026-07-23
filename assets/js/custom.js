@@ -341,7 +341,16 @@
         directory.getAttribute("data-voting-ready") !== "true" ||
         isSaving ||
         selectionsMatch();
-      confirmButton.textContent = isSaving ? "Confirming..." : "Confirm votes";
+
+      if (isSaving) {
+        confirmButton.textContent = "Confirming...";
+      } else if (draftCountries.length === 0) {
+        confirmButton.textContent = "Select destinations first";
+      } else if (selectionsMatch()) {
+        confirmButton.textContent = "Votes confirmed";
+      } else {
+        confirmButton.textContent = "Confirm votes";
+      }
     }
 
     function renderVoting() {
@@ -510,6 +519,14 @@
     }
 
     if (countrySearch) {
+      countrySearch.addEventListener("click", function (event) {
+        event.stopPropagation();
+      });
+
+      countrySearch.addEventListener("keydown", function (event) {
+        event.stopPropagation();
+      });
+
       countrySearch.addEventListener("input", filterBallotCountries);
     }
 

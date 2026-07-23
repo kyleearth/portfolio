@@ -781,7 +781,8 @@ a.profile-links-card__item {
   gap: 2.4rem;
 }
 
-.travel-index__overview {
+.travel-index__overview,
+.publication-metrics {
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -796,7 +797,12 @@ a.profile-links-card__item {
     linear-gradient(135deg, rgba(239, 246, 246, 0.92), rgba(255, 252, 247, 0.94));
 }
 
-.travel-index__overview::after {
+.publication-metrics {
+  margin-bottom: 2rem;
+}
+
+.travel-index__overview::after,
+.publication-metrics::after {
   content: "";
   position: absolute;
   top: -3.5rem;
@@ -811,7 +817,8 @@ a.profile-links-card__item {
   pointer-events: none;
 }
 
-.travel-index__count-block {
+.travel-index__count-block,
+.publication-metrics__item {
   position: relative;
   z-index: 1;
   min-width: 0;
@@ -819,16 +826,19 @@ a.profile-links-card__item {
   border-left: 1px solid rgba(16, 37, 49, 0.1);
 }
 
-.travel-index__count-block:first-child {
+.travel-index__count-block:first-child,
+.publication-metrics__item:first-child {
   padding-left: 0;
   border-left: 0;
 }
 
-.travel-index__count-block:last-child {
+.travel-index__count-block:last-child,
+.publication-metrics__item:last-child {
   padding-right: 0;
 }
 
-.page__content .travel-index__count {
+.page__content .travel-index__count,
+.archive .publication-metrics__value {
   margin: 0;
   color: #102531;
   font-family: "Source Serif 4", Georgia, serif;
@@ -837,7 +847,8 @@ a.profile-links-card__item {
   line-height: 0.9;
 }
 
-.travel-index__count small {
+.travel-index__count small,
+.publication-metrics__value small {
   display: block;
   margin-top: 0.65rem;
   color: #31505f;
@@ -1408,7 +1419,8 @@ a.profile-links-card__item {
     gap: 1.8rem;
   }
 
-  .travel-index__overview {
+  .travel-index__overview,
+  .publication-metrics {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
     gap: 1.2rem 0;
@@ -1416,21 +1428,25 @@ a.profile-links-card__item {
     border-radius: 20px;
   }
 
-  .travel-index__count-block {
+  .travel-index__count-block,
+  .publication-metrics__item {
     padding: 0 0 0 1rem;
   }
 
-  .travel-index__count-block:nth-child(odd) {
+  .travel-index__count-block:nth-child(odd),
+  .publication-metrics__item:nth-child(odd) {
     padding-left: 0;
     border-left: 0;
   }
 
-  .travel-index__count-block:nth-child(n + 3) {
+  .travel-index__count-block:nth-child(n + 3),
+  .publication-metrics__item:nth-child(n + 3) {
     padding-top: 1.2rem;
     border-top: 1px solid rgba(16, 37, 49, 0.1);
   }
 
-  .page__content .travel-index__count {
+  .page__content .travel-index__count,
+  .archive .publication-metrics__value {
     font-size: 2.8rem;
   }
 

@@ -3,7 +3,42 @@ layout: archive
 title: "Publications"
 permalink: /publications/
 author_profile: false
+citation_count: "260+"
+publication_count: 19
+collaborator_count: "10+"
+research_since: 2021
 ---
+
+<section class="publication-metrics" aria-label="Research and publication metrics">
+  <div class="publication-metrics__item">
+    <p class="section-kicker">Citations</p>
+    <p class="publication-metrics__value">
+      <span>{{ page.citation_count }}</span>
+      <small>and counting</small>
+    </p>
+  </div>
+  <div class="publication-metrics__item">
+    <p class="section-kicker">Publications</p>
+    <p class="publication-metrics__value">
+      <span>{{ page.publication_count }}</span>
+      <small>published &amp; ongoing</small>
+    </p>
+  </div>
+  <div class="publication-metrics__item">
+    <p class="section-kicker">Collaborators</p>
+    <p class="publication-metrics__value">
+      <span>{{ page.collaborator_count }}</span>
+      <small>across disciplines</small>
+    </p>
+  </div>
+  <div class="publication-metrics__item">
+    <p class="section-kicker">Research since</p>
+    <p class="publication-metrics__value">
+      <span>{{ page.research_since }}</span>
+      <small>and counting</small>
+    </p>
+  </div>
+</section>
 
 {% if site.author.googlescholar %}
   <div class="external-profile-link">

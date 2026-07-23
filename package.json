@@ -1,22 +1,23 @@
 {
-  "name": "minimal-mistakes",
-  "version": "3.4.2",
-  "description": "Minimal Mistakes Jekyll theme npm build scripts",
+  "name": "kyle-wang-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frontend build scripts for Kyle Wang's portfolio website",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mmistakes/minimal-mistakes.git"
+    "url": "https://github.com/kyleearth/portfolio.git"
   },
   "keywords": [
     "jekyll",
-    "theme",
-    "minimal"
+    "portfolio",
+    "academic"
   ],
-  "author": "Michael Rose",
-  "license": "MIT",
+  "author": "Kyle Wang",
+  "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/mmistakes/minimal-mistakes/issues"
+    "url": "https://github.com/kyleearth/portfolio/issues"
   },
-  "homepage": "https://mmistakes.github.io/minimal-mistakes/",
+  "homepage": "https://kyleearth.github.io/portfolio/",
   "engines": {
     "node": ">= 0.10.0"
   },

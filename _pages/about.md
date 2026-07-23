@@ -19,7 +19,7 @@ redirect_from:
     </div>
     <div class="landing-hero__media">
       <div class="portrait-panel">
-        <img src="/images/profilekw.png" alt="Portrait of Kyle Wang">
+        <img src="{{ '/images/profilekw.png' | relative_url }}" alt="Portrait of Kyle Wang">
       </div>
       <div class="profile-links-card">
         <p class="profile-links-card__item"><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i><span>New York Metropolitan</span></p>
@@ -88,6 +88,6 @@ redirect_from:
       <p class="section-kicker">Beyond research</p>
       <h2>Travel is one of the ways I stay curious about people, places, and perspective.</h2>
     </div>
-    <a class="btn btn--primary" href="/gallery/">Explore the Travel Footprint</a>
+    <a class="btn btn--primary" href="{{ '/gallery/' | relative_url }}">Explore the Travel Footprint</a>
   </section>
 </div>

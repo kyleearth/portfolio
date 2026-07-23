@@ -13,6 +13,7 @@ Gemfile.lock
 vendor/
 .env*
 !.env.example
+supabase/.temp/
 
 # Unused generated travel artwork from an earlier gallery design
 images/travel/

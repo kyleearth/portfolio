@@ -1,6 +1,4 @@
 -- Shared destination voting for the Travel Footprint page.
--- Run this file once in the Supabase SQL Editor before deploying the
--- supabase/functions/travel-vote Edge Function.
 
 create table if not exists public.travel_votes (
   ip_hash text not null,

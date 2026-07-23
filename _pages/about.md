@@ -88,6 +88,6 @@ redirect_from:
       <p class="section-kicker">Beyond research</p>
       <h2>Travel is one of the ways I stay curious about people, places, and perspective.</h2>
     </div>
-    <a class="btn btn--primary" href="{{ '/gallery/' | relative_url }}">Explore the Travel Footprint</a>
+    <a class="btn btn--primary" href="{{ '/travel/' | relative_url }}">Explore the Travel Footprint</a>
   </section>
 </div>

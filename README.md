@@ -23,6 +23,8 @@ Personal portfolio for Kyle Wang, a Computer Science Ph.D. candidate working acr
 | Site colors and layout | `_sass/_custom.scss` |
 | Interactive behavior | `assets/js/custom.js` |
 | Site-wide settings | `_config.yml` |
+| Supabase voting setup | `supabase/travel_votes.sql` |
+| Vote-limit Edge Function | `supabase/functions/travel-vote/index.ts` |
 
 ## Preview Locally
 
@@ -34,6 +36,22 @@ bundle exec ruby scripts/jekyll_local_preview.rb serve --config _config.yml,_con
 ```
 
 Open [http://localhost:4000](http://localhost:4000). The development configuration removes the `/portfolio` path locally.
+
+## Enable Shared Travel Voting
+
+1. Open the Supabase project and select **SQL Editor**.
+2. Run the complete `supabase/travel_votes.sql` script once.
+3. Add an `IP_HASH_SALT` secret containing at least 32 random characters under **Edge Functions > Secrets**.
+4. Deploy `supabase/functions/travel-vote` with JWT verification disabled, as configured in `supabase/config.toml`.
+5. Confirm the public project URL, publishable key, and function URL in `_config.yml`.
+
+```bash
+npx supabase login
+npx supabase secrets set IP_HASH_SALT="$(openssl rand -hex 32)" --project-ref usvuxozvlrtahmuxrija
+npx supabase functions deploy travel-vote --project-ref usvuxozvlrtahmuxrija --no-verify-jwt
+```
+
+The browser uses only the Supabase publishable key. Never add a secret key or service-role key to this repository. The Edge Function creates a one-way HMAC hash of the request IP and enforces a maximum of five active votes per hash. The database stores only that hash, destination name, and timestamp; it does not store raw IP addresses, names, email addresses, routes, or precise locations.
 
 ## Publish
 

@@ -11,6 +11,8 @@ Gemfile.lock
 .sass-cache/
 .DS_Store
 vendor/
+.env*
+!.env.example
 
 # Unused generated travel artwork from an earlier gallery design
 images/travel/

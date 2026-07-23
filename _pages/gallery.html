@@ -23,7 +23,12 @@ excerpt: "A privacy-conscious record of countries and areas visited."
   avoids dates, routes, cities, and precise location details.
 {% endcomment %}
 
-<div class="travel-index" data-travel-directory>
+<div
+  class="travel-index"
+  data-travel-directory
+  data-supabase-function-url="{{ site.supabase.travel_vote_url | escape }}"
+  data-supabase-key="{{ site.supabase.publishable_key | escape }}"
+  data-voting-ready="false">
   <section class="travel-index__overview" aria-labelledby="travel-overview-title">
     <div class="travel-index__count-block">
       <p class="section-kicker" id="travel-overview-title">Visited</p>
@@ -86,24 +91,26 @@ excerpt: "A privacy-conscious record of countries and areas visited."
     <summary class="travel-unexplored__summary">
       <div>
         <p class="section-kicker">Next horizons</p>
-        <h2>Where should I explore next? Vote for your favorite destination.</h2>
+        <h2>Where should I explore next? Vote for up to five favorite destinations.</h2>
       </div>
       <div class="travel-unexplored__total">
         <strong>{{ unexplored_count }}</strong>
         <span>countries</span>
-        <em class="travel-unexplored__recommendation-summary" id="travel-recommendation-summary" hidden>0 recommended</em>
+        <em class="travel-unexplored__recommendation-summary" id="travel-recommendation-summary" hidden>0 community votes</em>
       </div>
-      <i class="fas fa-chevron-down travel-unexplored__chevron" aria-hidden="true"></i>
+      <span class="travel-unexplored__chevron" aria-hidden="true">&#8964;</span>
     </summary>
 
     <div class="travel-unexplored__content">
       <section class="travel-recommendations" aria-labelledby="travel-recommendations-title">
         <div class="travel-recommendations__heading">
-          <p class="section-kicker" id="travel-recommendations-title">Recommended next</p>
-          <p id="travel-recommendation-status" aria-live="polite">Select any country below to build a travel shortlist.</p>
+          <p class="section-kicker" id="travel-recommendations-title">Community favorites</p>
+          <p id="travel-recommendation-status" aria-live="polite">Loading live vote totals and your available votes...</p>
         </div>
-        <div class="travel-recommendations__list" id="travel-recommendation-list" aria-live="polite"></div>
-        <button class="travel-recommendations__clear" id="travel-recommendation-clear" type="button" hidden>Clear all</button>
+        <div class="travel-recommendations__list" id="travel-recommendation-list" aria-live="polite">
+          <span class="travel-recommendations__empty">No votes yet. Be the first to choose a destination.</span>
+        </div>
+        <button class="travel-recommendations__refresh" id="travel-recommendation-refresh" type="button">Refresh totals</button>
       </section>
 
       {% for region in world_regions %}
@@ -132,9 +139,14 @@ excerpt: "A privacy-conscious record of countries and areas visited."
                       data-country="{{ country.name | escape }}"
                       data-flag="{{ country.flag }}"
                       aria-pressed="false"
-                      aria-label="Recommend {{ country.name | escape }}">
+                      aria-label="Vote for {{ country.name | escape }}"
+                      disabled>
                       <span class="travel-unexplored__flag" aria-hidden="true">{{ country.flag }}</span>
                       <span class="travel-unexplored__name">{{ country.name }}</span>
+                      <span class="travel-unexplored__vote-total">
+                        <strong data-vote-count>0</strong>
+                        <span data-vote-label>votes</span>
+                      </span>
                       <span class="travel-unexplored__star" aria-hidden="true">☆</span>
                     </button>
                   </li>

@@ -45,6 +45,15 @@
     var confirmButton = directory.querySelector("#travel-recommendation-confirm");
     var selectionCount = directory.querySelector("#travel-selection-count");
     var selectionLimit = directory.querySelector("#travel-selection-limit");
+    var countrySearch = directory.querySelector("#travel-country-search");
+    var countrySearchFeedback = directory.querySelector("#travel-country-search-feedback");
+    var ballotRegions = directory.querySelectorAll(".travel-unexplored__region");
+    var visitedPlaces = Array.from(directory.querySelectorAll(".travel-country")).map(function (place) {
+      return {
+        name: place.querySelector(".travel-country__text strong").textContent.trim(),
+        flag: place.querySelector(".travel-country__flag").textContent.trim()
+      };
+    });
 
     if (!voteButtons.length || !leaderboardList) {
       return;
@@ -93,6 +102,84 @@
       return confirmedCountries.every(function (country) {
         return draftCountries.indexOf(country) !== -1;
       });
+    }
+
+    function normalizeSearchText(value) {
+      return value
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function filterBallotCountries() {
+      if (!countrySearch) {
+        return;
+      }
+
+      var query = normalizeSearchText(countrySearch.value.trim());
+      var visibleOptions = 0;
+
+      voteButtons.forEach(function (button) {
+        var country = button.getAttribute("data-country");
+        var item = button.closest("li");
+        var isMatch = !query || normalizeSearchText(country).indexOf(query) !== -1;
+
+        item.hidden = !isMatch;
+
+        if (isMatch) {
+          visibleOptions += 1;
+        }
+      });
+
+      ballotRegions.forEach(function (region) {
+        var visibleRegionOptions = Array.from(
+          region.querySelectorAll(".travel-unexplored__countries > li")
+        ).some(function (item) {
+          return !item.hidden;
+        });
+
+        region.hidden = !visibleRegionOptions;
+      });
+
+      if (!countrySearchFeedback) {
+        return;
+      }
+
+      countrySearchFeedback.classList.remove("is-visited");
+
+      if (!query) {
+        countrySearchFeedback.hidden = true;
+        countrySearchFeedback.textContent = "";
+        return;
+      }
+
+      var visitedMatches = visitedPlaces.filter(function (place) {
+        return normalizeSearchText(place.name).indexOf(query) !== -1;
+      });
+
+      countrySearchFeedback.hidden = false;
+
+      if (visitedMatches.length) {
+        var visitedLabels = visitedMatches
+          .slice(0, 3)
+          .map(function (place) {
+            return place.flag + " " + place.name;
+          })
+          .join(", ");
+        var votingOptionMessage =
+          visibleOptions > 0
+            ? " " + visibleOptions + (visibleOptions === 1 ? " voting option found." : " voting options found.")
+            : "";
+
+        countrySearchFeedback.classList.add("is-visited");
+        countrySearchFeedback.textContent = "Already visited: " + visitedLabels + "." + votingOptionMessage;
+        return;
+      }
+
+      countrySearchFeedback.textContent =
+        visibleOptions > 0
+          ? visibleOptions + (visibleOptions === 1 ? " voting option found." : " voting options found.")
+          : "No matching country or area found.";
     }
 
     function createBrowserVoterId() {
@@ -420,6 +507,10 @@
 
     if (confirmButton) {
       confirmButton.addEventListener("click", confirmSelection);
+    }
+
+    if (countrySearch) {
+      countrySearch.addEventListener("input", filterBallotCountries);
     }
 
     if (!voteEndpoint || !supabaseKey || typeof window.fetch !== "function") {

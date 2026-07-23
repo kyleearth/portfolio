@@ -132,6 +132,20 @@ excerpt: "A curated overview of the countries and regions I have explored."
         </summary>
 
         <div class="travel-ballot__content">
+          <div class="travel-ballot__search">
+            <label for="travel-country-search">Search destinations</label>
+            <div class="travel-ballot__search-field">
+              <i class="fas fa-search" aria-hidden="true"></i>
+              <input
+                id="travel-country-search"
+                type="search"
+                placeholder="Search a country or area"
+                autocomplete="off"
+                spellcheck="false">
+            </div>
+            <p class="travel-ballot__search-feedback" id="travel-country-search-feedback" aria-live="polite" hidden></p>
+          </div>
+
           <div class="travel-ballot__actions">
             <p class="travel-ballot__status" id="travel-recommendation-status" aria-live="polite">Loading voting options...</p>
             <button class="travel-ballot__confirm" id="travel-recommendation-confirm" type="button" disabled>Confirm votes</button>

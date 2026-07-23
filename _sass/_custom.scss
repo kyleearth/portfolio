@@ -1229,6 +1229,76 @@ a.profile-links-card__item {
   border-top: 1px solid rgba(16, 37, 49, 0.08);
 }
 
+.travel-ballot__search {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(15, 82, 104, 0.12);
+  border-radius: 14px;
+  background: rgba(247, 251, 250, 0.82);
+}
+
+.travel-ballot__search label {
+  color: #31505f;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.travel-ballot__search-field {
+  position: relative;
+}
+
+.travel-ballot__search-field i {
+  position: absolute;
+  top: 50%;
+  left: 0.85rem;
+  color: #67808b;
+  font-size: 0.78rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.travel-ballot__search-field input {
+  width: 100%;
+  margin: 0;
+  padding: 0.7rem 0.85rem 0.7rem 2.3rem;
+  border: 1px solid rgba(16, 37, 49, 0.14);
+  border-radius: 11px;
+  background: #ffffff;
+  color: #173647;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.82rem;
+}
+
+.travel-ballot__search-field input:focus {
+  border-color: rgba(15, 82, 104, 0.48);
+  outline: 3px solid rgba(15, 82, 104, 0.09);
+}
+
+.travel-ballot__search-feedback {
+  margin: 0;
+  color: #607782;
+  font-size: 0.75rem;
+}
+
+.travel-ballot__search-feedback.is-visited {
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgba(15, 82, 104, 0.14);
+  border-radius: 10px;
+  background: rgba(229, 242, 239, 0.82);
+  color: #27596a;
+  font-weight: 700;
+}
+
+.travel-ballot__search-feedback.is-visited::before {
+  content: "\2713";
+  margin-right: 0.4rem;
+  color: #0f735f;
+}
+
 .travel-ballot__actions {
   position: sticky;
   top: 4.75rem;
@@ -1237,7 +1307,7 @@ a.profile-links-card__item {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 1rem;
-  margin: 0 -0.2rem;
+  margin: 0.75rem -0.2rem 0;
   padding: 0.8rem;
   border: 1px solid rgba(15, 82, 104, 0.12);
   border-radius: 14px;

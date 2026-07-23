@@ -1,7 +1,5 @@
 # Kyle Wang | Portfolio
 
-Personal portfolio for Kyle Wang, a Computer Science Ph.D. candidate working across human-centered AI, Human-Computer Interaction, and social data science.
-
 **Live site:** [kyleearth.github.io/portfolio](https://kyleearth.github.io/portfolio/)
 
 ## Website Sections

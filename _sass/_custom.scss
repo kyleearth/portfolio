@@ -1087,8 +1087,9 @@ a.profile-links-card__item {
 
 .travel-leaderboard__list {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.45rem;
-  max-height: 22rem;
+  max-height: 14rem;
   margin: 0;
   padding: 0 0.2rem 0 0;
   overflow-y: auto;
@@ -1324,9 +1325,6 @@ a.profile-links-card__item {
 }
 
 .travel-unexplored__country {
-  --vote-shade: 0;
-  --vote-border: 0.06;
-
   display: flex;
   align-items: center;
   gap: 0.55rem;
@@ -1334,14 +1332,9 @@ a.profile-links-card__item {
   height: 100%;
   min-width: 0;
   padding: 0.55rem 0.65rem;
-  border: 1px solid rgba(15, 82, 104, var(--vote-border));
+  border: 1px solid rgba(16, 37, 49, 0.08);
   border-radius: 12px;
-  background:
-    linear-gradient(
-      rgba(15, 82, 104, var(--vote-shade)),
-      rgba(15, 82, 104, var(--vote-shade))
-    ),
-    rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.76);
   color: #31505f;
   font-size: 0.78rem;
   line-height: 1.35;
@@ -1353,6 +1346,7 @@ a.profile-links-card__item {
 .travel-unexplored__country:focus {
   transform: translateY(-1px);
   border-color: rgba(15, 82, 104, 0.3);
+  background: #ffffff;
   box-shadow: 0 8px 18px rgba(15, 82, 104, 0.08);
 }
 
@@ -1633,6 +1627,10 @@ a.profile-links-card__item {
     display: grid;
     align-items: start;
     gap: 0.8rem;
+  }
+
+  .travel-leaderboard__list {
+    grid-template-columns: 1fr;
   }
 
   .travel-leaderboard__refresh {

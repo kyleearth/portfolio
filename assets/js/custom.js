@@ -142,20 +142,14 @@
     function renderVoteButtons() {
       var isReady = directory.getAttribute("data-voting-ready") === "true";
       var isAtLimit = draftCountries.length >= maxVotes;
-      var highestVoteCount = Object.keys(voteCounts).reduce(function (highest, country) {
-        return Math.max(highest, Number(voteCounts[country] || 0));
-      }, 0);
 
       voteButtons.forEach(function (button) {
         var country = button.getAttribute("data-country");
         var count = Number(voteCounts[country] || 0);
         var isSelected = draftCountries.indexOf(country) !== -1;
-        var voteIntensity = highestVoteCount > 0 ? Math.sqrt(count / highestVoteCount) : 0;
         var countElement = button.querySelector("[data-vote-count]");
         var labelElement = button.querySelector("[data-vote-label]");
 
-        button.style.setProperty("--vote-shade", (voteIntensity * 0.13).toFixed(3));
-        button.style.setProperty("--vote-border", (0.06 + voteIntensity * 0.18).toFixed(3));
         button.classList.toggle("is-recommended", isSelected);
         button.classList.toggle("is-loading", isSaving);
         button.setAttribute("aria-pressed", isSelected ? "true" : "false");

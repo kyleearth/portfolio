@@ -5,7 +5,7 @@ permalink: /publications/
 author_profile: false
 citation_count: "260+"
 publication_count: 19
-collaborator_count: "10+"
+collaborator_count: "15+"
 research_since: 2021
 ---
 
@@ -14,7 +14,6 @@ research_since: 2021
     <p class="section-kicker">Citations</p>
     <p class="publication-metrics__value">
       <span>{{ page.citation_count }}</span>
-      <small>and counting</small>
     </p>
   </div>
   <div class="publication-metrics__item">
@@ -35,7 +34,6 @@ research_since: 2021
     <p class="section-kicker">Research since</p>
     <p class="publication-metrics__value">
       <span>{{ page.research_since }}</span>
-      <small>and counting</small>
     </p>
   </div>
 </section>

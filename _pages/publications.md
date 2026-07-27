@@ -3,10 +3,10 @@ layout: archive
 title: "Publications"
 permalink: /publications/
 author_profile: false
-citation_count: "260+"
+citation_count: "270+"
 publication_count: 19
 collaborator_count: "15+"
-research_since: 2021
+peer_reviewed_count: "35+"
 ---
 
 <section class="publication-metrics" aria-label="Research and publication metrics">
@@ -31,9 +31,10 @@ research_since: 2021
     </p>
   </div>
   <div class="publication-metrics__item">
-    <p class="section-kicker">Research since</p>
+    <p class="section-kicker">Peer Reviewed</p>
     <p class="publication-metrics__value">
-      <span>{{ page.research_since }}</span>
+      <span>{{ page.peer_reviewed_count }}</span>
+      <small>manuscripts</small>
     </p>
   </div>
 </section>

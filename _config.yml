@@ -18,7 +18,7 @@ repository               : "kyleearth/portfolio"
 # Public Cloudflare Worker endpoint for the Travel Footprint vote counter.
 # The Worker owns database access; never add database credentials here.
 travel_vote:
-  url                    : "https://travel-vote.REPLACE_WITH_YOUR_SUBDOMAIN.workers.dev"
+  url                    : "https://travel-vote.travel-vote-workersdev.workers.dev"
 
 # Site Author
 author:

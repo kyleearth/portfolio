@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "travel-vote",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-02",
+  "workers_dev": true,
+  "vars": {
+    "ALLOWED_ORIGINS": "https://kyleearth.github.io,http://localhost:4000,http://127.0.0.1:4000"
+  },
+  "secrets": {
+    "required": ["IP_HASH_SALT"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "travel-votes",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

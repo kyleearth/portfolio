@@ -15,6 +15,9 @@ vendor/
 !.env.example
 supabase/.temp/
 .worktrees/
+cloudflare/travel-vote/node_modules/
+cloudflare/travel-vote/.wrangler/
+cloudflare/travel-vote/.dev.vars*
 
 # Unused generated travel artwork from an earlier gallery design
 images/travel/

@@ -15,12 +15,10 @@ url                      : https://kyleearth.github.io
 baseurl                  : "/portfolio"
 repository               : "kyleearth/portfolio"
 
-# Public browser credentials for the Travel Footprint vote counter.
-# Never add a Supabase secret or service-role key here.
-supabase:
-  url                    : "https://usvuxozvlrtahmuxrija.supabase.co"
-  publishable_key        : "sb_publishable_CIF8I9GqFkoqtLGocO827Q_yfLOa1v0"
-  travel_vote_url        : "https://usvuxozvlrtahmuxrija.supabase.co/functions/v1/travel-vote"
+# Public Cloudflare Worker endpoint for the Travel Footprint vote counter.
+# The Worker owns database access; never add database credentials here.
+travel_vote:
+  url                    : "https://travel-vote.REPLACE_WITH_YOUR_SUBDOMAIN.workers.dev"
 
 # Site Author
 author:

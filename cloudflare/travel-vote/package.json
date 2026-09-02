@@ -6,8 +6,8 @@
     "node": ">=22"
   },
   "scripts": {
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "IP_HASH_SALT=development-test-salt-that-is-at-least-32-characters vitest run",
+    "test:watch": "IP_HASH_SALT=development-test-salt-that-is-at-least-32-characters vitest",
     "types": "wrangler types",
     "typecheck": "npm run types && tsc --noEmit",
     "dev": "wrangler dev",

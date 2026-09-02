@@ -28,8 +28,7 @@ excerpt: "A curated overview of the countries and regions I have explored."
 <div
   class="travel-index"
   data-travel-directory
-  data-supabase-function-url="{{ site.supabase.travel_vote_url | escape }}"
-  data-supabase-key="{{ site.supabase.publishable_key | escape }}"
+  data-travel-vote-url="{{ site.travel_vote.url | escape }}"
   data-voting-ready="false">
   <section class="travel-index__overview" aria-labelledby="travel-overview-title">
     <div class="travel-index__count-block">

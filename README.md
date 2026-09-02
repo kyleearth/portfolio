@@ -21,8 +21,8 @@
 | Site colors and layout | `_sass/_custom.scss` |
 | Interactive behavior | `assets/js/custom.js` |
 | Site-wide settings | `_config.yml` |
-| Supabase voting setup | `supabase/migrations/20260723000000_create_travel_votes.sql` |
-| Vote-limit Edge Function | `supabase/functions/travel-vote/index.ts` |
+| Cloudflare D1 voting schema | `cloudflare/travel-vote/migrations/0001_create_travel_votes.sql` |
+| Cloudflare voting Worker | `cloudflare/travel-vote/src/index.ts` |
 
 ## Preview Locally
 
@@ -37,21 +37,25 @@ Open [http://localhost:4000](http://localhost:4000). The development configurati
 
 ## Enable Shared Travel Voting
 
-1. Link the local folder to the Supabase project.
-2. Push the database migration in `supabase/migrations`.
-3. Add an `IP_HASH_SALT` secret containing at least 32 random characters.
-4. Deploy `supabase/functions/travel-vote` with JWT verification disabled, as configured in `supabase/config.toml`.
-5. Confirm the public project URL, publishable key, and function URL in `_config.yml`.
+The Worker requires Node.js 22 or later.
+
+1. Install the Worker dependencies and sign in to Cloudflare.
+2. Create the D1 database and copy the returned database ID into `cloudflare/travel-vote/wrangler.jsonc`.
+3. Apply the database migration and add a private `IP_HASH_SALT` secret.
+4. Deploy the Worker, then copy its `workers.dev` URL into `travel_vote.url` in `_config.yml`.
 
 ```bash
-npx supabase login
-npx supabase link --project-ref usvuxozvlrtahmuxrija
-npx supabase db push
-npx supabase secrets set IP_HASH_SALT="$(openssl rand -hex 32)" --project-ref usvuxozvlrtahmuxrija
-npx supabase functions deploy travel-vote --project-ref usvuxozvlrtahmuxrija --no-verify-jwt
+cd cloudflare/travel-vote
+npm install
+npx wrangler login
+npx wrangler d1 create travel-votes
+# Update database_id in wrangler.jsonc with the ID printed above.
+npx wrangler d1 migrations apply DB --remote
+openssl rand -hex 32 | npx wrangler secret put IP_HASH_SALT
+npx wrangler deploy
 ```
 
-The browser uses only the Supabase publishable key. Never add a secret key or service-role key to this repository. The Edge Function combines the visitor address from Supabase's forwarded IP header with an anonymous browser ID, creates a one-way HMAC hash, and enforces a maximum of five active votes per visitor hash. This keeps people on the same shared network from sharing one ballot. The database stores only the hash, destination name, and timestamp; it does not store raw IP addresses, browser IDs, names, email addresses, routes, or precise locations.
+The browser receives only the Worker URL; it never receives a database credential. The Worker combines Cloudflare's connecting-IP header with an anonymous browser ID, creates a one-way HMAC hash, and enforces a maximum of five active votes per visitor hash. This keeps people on the same shared network from sharing one ballot. The database stores only the hash, destination name, and timestamp; it does not store raw IP addresses, browser IDs, names, email addresses, routes, or precise locations.
 
 ## Publish
 

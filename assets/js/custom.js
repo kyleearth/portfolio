@@ -59,8 +59,7 @@
       return;
     }
 
-    var voteEndpoint = directory.getAttribute("data-supabase-function-url");
-    var supabaseKey = directory.getAttribute("data-supabase-key");
+    var voteEndpoint = directory.getAttribute("data-travel-vote-url");
     var countries = {};
     var voteCounts = {};
     var participantCount = null;
@@ -386,7 +385,6 @@
       var response = await window.fetch(voteEndpoint, {
         method: options && options.method ? options.method : "GET",
         headers: {
-          apikey: supabaseKey,
           "Content-Type": "application/json",
           "x-voter-id": getBrowserVoterId()
         },
@@ -407,7 +405,7 @@
     }
 
     async function loadVoteData(announceRefresh) {
-      if (!voteEndpoint || !supabaseKey) {
+      if (!voteEndpoint) {
         return false;
       }
 
@@ -530,7 +528,7 @@
       countrySearch.addEventListener("input", filterBallotCountries);
     }
 
-    if (!voteEndpoint || !supabaseKey || typeof window.fetch !== "function") {
+    if (!voteEndpoint || typeof window.fetch !== "function") {
       setVotingReady(false);
       setVoteStatus("Live voting could not load. Please refresh the page and try again.", true);
       return;

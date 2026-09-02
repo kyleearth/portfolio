@@ -14,7 +14,7 @@
     {
       "binding": "DB",
       "database_name": "travel-votes",
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "database_id": "3b981f90-900f-4fbd-bfb3-bf8fe1b714ef",
       "migrations_dir": "migrations"
     }
   ]

@@ -3,7 +3,7 @@ layout: archive
 title: "Publications"
 permalink: /publications/
 author_profile: false
-citation_count: "270+"
+citation_count: "280+"
 publication_count: 19
 collaborator_count: "15+"
 peer_reviewed_count: "35+"
@@ -48,9 +48,9 @@ peer_reviewed_count: "35+"
 
 ## Working in Progress
 
-- **Wang, Q.**, et al. (2026) Wisdom of the LLM Crowd: A Large Scale Benchmark of Multi-Label U.S. Election-Related Harmful Social Media Content. [arXiv:2602.11962v2](https://arxiv.org/abs/2602.11962v2)
+- **Wang, Q.**, et al. (2026) USE24-XD: a multilabel dataset of 2024 U.S. election X (Twitter) annotated for harmful content. *Scientific Data.* (In Review) [arXiv:2602.11962v2](https://arxiv.org/abs/2602.11962v2)
 
-- **Wang, Q.**, et al. (2026) AI4OSN: Usability Study of a Human-Centered Agentic AI Platform for Online Social Network Research.
+- **Wang, Q.**, et al. (2026) AI4OSN: Usability Study of a Human-Centered Agentic AI Platform for Online Social Network Research. *International Journal of Human–Computer Interaction* (In Review)
 
 - He, O., Liu, A., **Wang, Q.**, & Mauriello, M. (2026). What’s in an Outfit? Human and LLM Takes on Color, Clothing, and Occupation.
 

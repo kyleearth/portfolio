@@ -58,9 +58,9 @@ peer_reviewed_count: "35+"
 
 - Ostadrahimi, S., Faghri, S., **Wang, Q.**, et al. (2026) Revisiting Classical Machine Learning on X: Detecting User Stance Toward Trump and Biden in the 2024 U.S. Election. *SNAM* (In Review). DOI: [10.21203/rs.3.rs-9735442/v1](https://doi.org/10.21203/rs.3.rs-9735442/v1)
 
-- Tilekar, O., Mauriello, M., Khatiwada, P., **Wang, Q.**, Goel, R., & Bagozzi, B. (2026). Beyond Fact-Checking: A Hybrid LLM-Classifier Pipeline for Detecting and Interpreting Coordinated Manipulative Media Campaigns. In *Proceedings of the 60th Hawaii International Conference on System Sciences* (In Review)
-
 ## Conference Proceedings
+
+- Tilekar, O., Mauriello, M., Khatiwada, P., **Wang, Q.**, Goel, R., & Bagozzi, B. (2026). Beyond Fact-Checking: A Hybrid LLM-Classifier Pipeline for Detecting and Interpreting Coordinated Manipulative Media Campaigns. In *Proceedings of the 60th Hawaii International Conference on System Sciences* (To Appear)
 
 - **Wang, Q.**, Erqsous, M., Khatiwada, P., Karwankar, A., Alhassan, F. M., Chandrasekaran, A., ... Mauriello, M. L. (2025). Leveraging Large Language Models for Review Classification and Rating Estimation of Mental Health Applications. In *Proceedings of the International AAAI Conference on Web and Social Media (ICWSM)* (Vol. 19, pp. 2017–2029). DOI: [10.1609/icwsm.v19i1.35916](https://doi.org/10.1609/icwsm.v19i1.35916)
 

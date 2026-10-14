@@ -4,7 +4,7 @@ title: "Publications"
 permalink: /publications/
 author_profile: false
 citation_count: "280+"
-publication_count: 20
+publication_count: 21
 collaborator_count: "15+"
 peer_reviewed_count: "35+"
 ---
@@ -47,6 +47,8 @@ peer_reviewed_count: "35+"
 {% endif %}
 
 ## Working in Progress
+
+- **Wang, Q.**, et al. (2026) LATA: LLM-Assisted Thematic Analysis for Transparent, Rigorous Qualitative Research
 
 - **Wang, Q.**, et al. (2026). Signals in the Sky: Multi-Dimensional Trump-Related Political Discourse Analysis on Bluesky.
 

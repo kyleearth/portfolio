@@ -66,7 +66,7 @@ peer_reviewed_count: "35+"
 
 - Barmaki, R. L., Kim, K., Guo, Z., **Wang, Q.**, Yu, K., Pearlman, R., & Navab, N. (2024) A Large-Scale Feasibility and Ethnography Study of Screen-based AR and 3D Visualization Tools for Anatomy Education: Exploring Gender Perspectives in Learning Experience. *IEEE International Conference on Artificial Intelligence and eXtended and Virtual Reality (AiXRVR)* (pp. 205–214). DOI: [10.1109/AiXRVR59861.2024.00033](https://doi.org/10.1109/AiXRVR59861.2024.00033)
 
-- Baron, L., **Wang, Q.**, Segear, S., Cohn, B. A., Kim, K., & Barmaki, R. (2021). Enjoyable Physical Therapy Experience with Interactive Drawing Games in Immersive Virtual Reality. In *Proceedings of the 2021 ACM Symposium on Spatial User Interaction (SUI)* (pp. 1–8). DOI: [10.1145/3485279.3485285](https://doi.org/10.1145/3485279.3485285)
+- Baron, L., **Wang, Q.**, Segear, S., Cohn, B. A., Kim, K., & Barmaki, R. (2021). Enjoyable Physical Therapy Experience with Interactive Drawing Games in Immersive Virtual Reality. In *Proceedings of the 2021 ACM Symposium on Spatial User Interaction (SUI)* (pp. 1–8). DOI: [10.1145/3485279.3485285](https://doi.org/10.1145/3485279.3485285) · [\[PDF\]]({{ '/files/publications/2021-sui-vr-drawing-games-physical-therapy/vr-drawing-games-physical-therapy_sui2021_paper.pdf' | relative_url }})
 
 
 ## Journal Articles

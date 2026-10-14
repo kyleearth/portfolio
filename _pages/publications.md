@@ -48,7 +48,7 @@ peer_reviewed_count: "35+"
 
 ## Working in Progress
 
-- **Wang, Q.**, et al. (2026) USE24-XD: a multilabel dataset of 2024 U.S. election X (Twitter) annotated for harmful content. *Scientific Data.* (In Review) [arXiv:2602.11962v2](https://arxiv.org/abs/2602.11962v2) · [\[Data\]](https://zenodo.org/records/22777827)
+- **Wang, Q.**, et al. (2026) USE24-XD: a multilabel dataset of 2024 U.S. election X (Twitter) annotated for harmful content. [arXiv:2602.11962v2](https://arxiv.org/abs/2602.11962v2) · [\[Data\]](https://zenodo.org/records/22777827)
 
 - **Wang, Q.**, et al. (2026) AI4OSN: Usability Study of a Human-Centered Agentic AI Platform for Online Social Network Research. *International Journal of Human–Computer Interaction* (In Review)
 

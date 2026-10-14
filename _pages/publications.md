@@ -4,7 +4,7 @@ title: "Publications"
 permalink: /publications/
 author_profile: false
 citation_count: "280+"
-publication_count: 19
+publication_count: 20
 collaborator_count: "15+"
 peer_reviewed_count: "35+"
 ---
@@ -48,7 +48,7 @@ peer_reviewed_count: "35+"
 
 ## Working in Progress
 
-- **Wang, Q.**, et al. (2026). ESignals in the Sky: Multi-Dimensional Trump-Related Political Discourse Analysis on Bluesky.
+- **Wang, Q.**, et al. (2026). Signals in the Sky: Multi-Dimensional Trump-Related Political Discourse Analysis on Bluesky.
 
 - **Wang, Q.**, et al. (2026) USE24-XD: a multilabel dataset of 2024 U.S. election X (Twitter) annotated for harmful content. [arXiv:2602.11962v2](https://arxiv.org/abs/2602.11962v2) · [\[Data\]](https://zenodo.org/records/22777827)
 

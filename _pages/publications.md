@@ -3,7 +3,7 @@ layout: archive
 title: "Publications"
 permalink: /publications/
 author_profile: false
-citation_count: "280+"
+citation_count: "290+"
 publication_count: 21
 collaborator_count: "15+"
 peer_reviewed_count: "35+"

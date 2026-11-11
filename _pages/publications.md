@@ -58,8 +58,6 @@ peer_reviewed_count: "35+"
 
 - He, O., Liu, A., **Wang, Q.**, & Mauriello, M. (2026). What’s in an Outfit? Human and LLM Takes on Color, Clothing, and Occupation.
 
-- **Wang, Q.**, et al. (2026) “The Explanation Makes Sense”: An Empirical Study of LLM News Classification and Its Influence on Human Judgment. *TSC* (In Review). [arXiv:2602.19690](https://arxiv.org/abs/2602.19690) · [\[Data\]](https://zenodo.org/records/22865164)
-
 ## Conference Proceedings
 
 - Tilekar, O., Mauriello, M., Khatiwada, P., **Wang, Q.**, Goel, R., & Bagozzi, B. (2026). Beyond Fact-Checking: A Hybrid LLM-Classifier Pipeline for Detecting and Interpreting Coordinated Manipulative Media Campaigns. In *Proceedings of the 60th Hawaii International Conference on System Sciences* (To Appear) · [\[Poster (DDS 2026)\]]({{ '/files/publications/2026-hicss-beyond-fact-checking/beyond-fact-checking_dds2026_poster.pdf' | relative_url }})
@@ -76,6 +74,8 @@ peer_reviewed_count: "35+"
 - **Wang, Q.**, Salloum, A., Vieira, C. C., Bagozzi, B. E., Kivelä, M., Barner, K. E., & Maureillo, M. L. (2026). Echoes in the Sky: Computational Thematic Analysis of Online Public Discourse on Bluesky Across Trump's Reelection. *Advances in Social Networks Analysis and Mining*. *Lecture Notes in Social Networks*. Springer. (To Appear at *ASONAM*) [arXiv](https://arxiv.org/abs/2608.04120) · [\[Slides\]]({{ '/files/publications/2026-asonam-echoes-in-the-sky/echoes-in-the-sky_asonam2026_slides.pdf' | relative_url }}) [\[Data\]](https://zenodo.org/records/22864223)
 
 - **Wang, Q.**, Ostadrahimi, S., Faghri, S., Baksh, M., Mauriello, M. L., & Barner, K. E. (2026). Political Stance Detection on X During the 2024 U.S. Election: A Comparative Study of Classical, Neural, and Transformer Models. *Social Network Analysis and Mining* (Springer Nature) (To Appear) · [\[Data\]](https://zenodo.org/records/23405772)
+
+- **Wang, Q.**, et al. (2026). “The Explanation Makes Sense”: An Empirical Study of LLM News Classification and Its Influence on Human Judgment. *ACM Transactions on Social Computing (TSC)* (To Appear) · [arXiv:2602.19690](https://arxiv.org/abs/2602.19690) · [\[Data\]](https://zenodo.org/records/22865164)
 
 - **Wang, Q.**, Erqsous, M., Barner, K. E., & Mauriello, M. L. (2025) LATA: A Pilot Study on LLM-Assisted Thematic Analysis of Online Social Network Data Generation Experiences. *Proceedings of the ACM on Human-Computer Interaction, 9*(2), 1–28. Presented at *CSCW*. DOI: [10.1145/3711022](https://doi.org/10.1145/3711022) · [\[PDF\]]({{ '/files/publications/2025-cscw-lata/lata-llm-assisted-thematic-analysis_cscw2025_paper.pdf' | relative_url }}) [\[Slides\]]({{ '/files/publications/2025-cscw-lata/lata-llm-assisted-thematic-analysis_cscw2025_slides.pdf' | relative_url }})
 

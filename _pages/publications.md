@@ -73,7 +73,7 @@ peer_reviewed_count: "35+"
 
 - **Wang, Q.**, Salloum, A., Vieira, C. C., Bagozzi, B. E., Kivelä, M., Barner, K. E., & Maureillo, M. L. (2026). Echoes in the Sky: Computational Thematic Analysis of Online Public Discourse on Bluesky Across Trump's Reelection. *Advances in Social Networks Analysis and Mining*. *Lecture Notes in Social Networks*. Springer. (To Appear at *ASONAM*) [arXiv](https://arxiv.org/abs/2608.04120) · [\[Slides\]]({{ '/files/publications/2026-asonam-echoes-in-the-sky/echoes-in-the-sky_asonam2026_slides.pdf' | relative_url }}) [\[Data\]](https://zenodo.org/records/22864223)
 
-- **Wang, Q.**, Ostadrahimi, S., Faghri, S., Baksh, M., Mauriello, M. L., & Barner, K. E. (2026). Political Stance Detection on X During the 2024 U.S. Election: A Comparative Study of Classical, Neural, and Transformer Models. *Social Network Analysis and Mining* (Springer Nature) (To Appear) · [\[Data\]](https://zenodo.org/records/23405772)
+- **Wang, Q.**, Ostadrahimi, S., Faghri, S., Baksh, M., Mauriello, M. L., & Barner, K. E. (2026). Political Stance Detection on X During the 2024 U.S. Election: A Comparative Study of Classical, Neural, and Transformer Models. *Social Network Analysis and Mining* (Springer Nature). DOI: [10.1007/s13278-026-01656-7](https://doi.org/10.1007/s13278-026-01656-7) · [\[Data\]](https://zenodo.org/records/23405772)
 
 - **Wang, Q.**, et al. (2026). “The Explanation Makes Sense”: An Empirical Study of LLM News Classification and Its Influence on Human Judgment. *ACM Transactions on Social Computing (TSC)* (To Appear) · [arXiv:2602.19690](https://arxiv.org/abs/2602.19690) · [\[Data\]](https://zenodo.org/records/22865164)
 
